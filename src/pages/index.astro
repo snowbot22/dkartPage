@@ -1,0 +1,18 @@
+---
+import { getEntries } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+const blogPost = await getEntry("products", "a");
+// Resuelve una referencia singular
+const allBlogPosts = await getCollection("products");
+
+// Obtén una única entrada de colleción.
+// Requiere el nombre de la colección y también
+// el `slug` de la entrada (colecciones de contenido) o `id` (colecciones de datos)
+// Ejemplo: recupera `src/content/authors/grace-hopper.json`
+const graceHopperProfile = await getEntry("products", "a");
+
+---
+
+<main>
+	<h1>{graceHopperProfile.data.titulo}</h1>
+</main>
