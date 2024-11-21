@@ -16,4 +16,6 @@ const pageCollection = defineCollection({
 //    Esta clave debe coincidir con el nombre de tu directorio de colección en "src/content"
 export const collections = {
   products: pageCollection,
+  accesorios: pageCollection,
+  equipos: pageCollection
 };

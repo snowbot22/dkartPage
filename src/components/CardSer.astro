@@ -1,0 +1,66 @@
+---
+const { imgs,titles } = Astro.props;
+---
+
+<section class="cardSer">
+    <img class="cardSer__img" src={imgs} alt="">
+    <section class="cardSer__text">
+        <h3 class="cardSer__title">
+            {titles.toUpperCase()}
+        </h3>
+        <a class="cardSer__button" href="/">
+            Ver más
+        </a>
+    </section>
+</section>
+
+<style>
+    .cardSer{
+        width: 100%;
+        height: 350px;
+        display: flex;
+        flex-flow: column nowrap;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .cardSer__img{
+        height: 70%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        grid-column: 1;
+        grid-row: 1;
+        z-index: 1;
+        border-radius: 10px;
+    }
+    .cardSer__text{
+        color: #222;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        grid-row: 1;
+        grid-column: 1;
+        z-index: 2;
+        height: 30%;
+        width: 100%;
+        align-self: end;
+        text-align: center;
+    }
+    .cardSer__title{
+        font-size: 20px;
+    }
+    .cardSer__button{
+        background-color: #222;
+        color: rgb(245, 245, 247);
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 20px;
+        width: 100px;
+    }
+    .cardSer__button:hover{
+        background-color: #672434;
+        transition: all ease-in 0.3s;
+    }
+</style>
