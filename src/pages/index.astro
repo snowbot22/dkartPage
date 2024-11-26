@@ -1,262 +1,307 @@
 ---
-import Carrusel from "../components/Slider-Index"
-import Layout from "../layouts/Layout.astro"
-import CarruselGeneral from "../components/Slider"
-import CardSer from "../components/CardSer.astro"
-import CardProd from "../components/CardProd.astro"
-import CardAcc from "../components/CardAcc.astro"
+import Carrusel from "../components/Slider-Index";
+import Layout from "../layouts/Layout.astro";
+import CarruselGeneral from "../components/Slider";
+import CardSer from "../components/CardSer.astro";
+import CardProd from "../components/CardProd.astro";
+import CardAcc from "../components/CardAcc.astro";
 
-const imgs=[
-    "/images/index1.jpg",
-    "/images/index2.jpg",
-    "/images/index3.jpg"
-]
+const imgs = ["/images/index1.jpg", "/images/index2.jpg", "/images/index3.jpg"];
 
-const imgs2=[
-    "/images/q.jpg"
-]
+const imgs2 = ["/images/q.jpg"];
 
-const titles=[
-    "Topografía",
-    "Geodésia",
-    "Fotogrametría",
-    "Cartografía",
-    "Batimetría",
-    "Diseño de Vías",
-    "Catastro",
-    "Transporte",
-    "Transferencia de Conocimientos"
-]
-const imgs3=[
-    "/images/s1.jpg",
-    "/images/s2.jpeg",
-    "/images/s3.jpg",
-    "/images/s4.jpeg",
-    "/images/s5.webp",
-    "/images/s6.jpg",
-    "/images/s7.jpeg",
-    "/images/s8.jpg",
-    "/images/s9.jpg",
-]
+const titles = [
+  "Topografía",
+  "Geodésia",
+  "Fotogrametría",
+  "Cartografía",
+  "Batimetría",
+  "Diseño de Vías",
+  "Catastro",
+  "Transporte",
+  "Transferencia de Conocimientos",
+];
+const imgs3 = [
+  "/images/s1.jpg",
+  "/images/s2.jpeg",
+  "/images/s3.jpg",
+  "/images/s4.jpeg",
+  "/images/s5.webp",
+  "/images/s6.jpg",
+  "/images/s7.jpeg",
+  "/images/s8.jpg",
+  "/images/s9.jpg",
+];
 
-const tAccs=[
-    "Bases Nivelantes",
-    "Bastones",
-    "Baterias",
-    "Distanciometros",
-    "Prismas y Miniprismas",
-    "Tripodes"
-]
+const tAccs = [
+  "Bases Nivelantes",
+  "Bastones",
+  "Baterias",
+  "Distanciometros",
+  "Prismas y Miniprismas",
+  "Tripodes",
+];
 
-const imgs4=[
-    "/images/a1.webp",
-    "/images/a2.jpg",
-    "/images/a3.webp",
-    "/images/a4.jpg",
-    "/images/a5-1.jpg",
-    "/images/a6.jpg"
-]
+const imgs4 = [
+  "/images/a1.webp",
+  "/images/a2.jpg",
+  "/images/a3.webp",
+  "/images/a4.jpg",
+  "/images/a5-1.jpg",
+  "/images/a6.jpg",
+];
 
-const imgs5=[
-    "/images/r1.png",
-    "/images/r2.png",
-    "/images/r3.png",
-    "/images/r4.png",
-    "/images/r5.png",
-    "/images/r6.png"
-]
-
+const imgs5 = [
+  "/images/r1.png",
+  "/images/r2.png",
+  "/images/r3.png",
+  "/images/r4.png",
+  "/images/r5.png",
+  "/images/r6.png",
+];
 ---
 
-<Layout title='Index'>
-    <Carrusel client:visible imgs={imgs}/>
-    <article class="somos flex--row--wrap">
-        <section class="somos__text">
-            <h2 class="somos__title">
-                QUIENES SOMOS
-            </h2>
-            <section class="somos__container">
-                <p class="somos__p1">
-                    <span class="bold color--red">DESCARTES ENGINEERING COMPANY DKART C.A</span>, es una empresa ecuatoriana con 10 años en el mercado en la prestación de servicios especializados en levantamientos topográficos y geodésicos, 
-                    así como consultorías en catastros urbanos y rurales, planes de movilidad; 
-                    todo esto utilizando equipos de última tecnología y procedimientos que aseguran la más alta precisión y confiabilidad en nuestros proyectos. 
-                </p>
-                <p class="somos__p2">
-                    Desarrollamos los trabajos de campo y gabinete con instrumentos y software de última generación, de forma que los rendimientos obtenidos permitan alcanzar objetivos de trabajo en campo con los menores plazos de ejecución y efectividad.
-                </p>
-                <p class="somos__p3">
-                    <span class="bold color--red">DKART C.A.</span>, mantiene la representación para el Ecuador de diferentes marcas de prestigio en el ámbito topográfico y geodésico, brindando respaldo técnico a nuestros clientes.
-                </p>
-            </section>
-        </section>
-        <section class="somos__imgs">
-            <CarruselGeneral client:load imgs={imgs2}/>
-        </section>
-    </article>
-    <article class="services flex--col--nowrap">
-        <h2 class="services__title">
-            NUESTROS SERVICIOS
-        </h2>
-        <section class="services__container">
-           {titles.map((t,index)=>{
-            return <CardSer titles={t} imgs={imgs3[index]} />
-           })}
-        </section>
-    </article>
-    <article class="products flex--col--nowrap">
-        <h2 class="products__title">
-            VENTA DE EQUIPOS
-        </h2>
-        <CardProd />
-    </article>
-    <article class="accs flex--col--nowrap">
-        <h2 class="accs__title">
-            ACCESORIOS
-        </h2>
-        <section class="acc__container">
-            {tAccs.map((t,index)=>{
-                return <CardAcc titles={t} imgs={imgs4[index]}/>
-            })}
-        </section>
-    </article>
-    <article class="repr flex--col--nowrap">
-        <h2 class="rep__title">
-            REPRESENTACIONES INTERNACIONALES
-        </h2>
-        <section class="rep__container">
-            {imgs5.map((r,index)=>{
-                return <picture class="rep__item">
-                    <img src={r} alt={"image" + index} class="rep__img">
-                </picture>
-            })}
-        </section>
-    </article>
+<Layout title="Index">
+  <Carrusel client:visible imgs={imgs} />
+  <article class="somos flex--row--wrap">
+    <section class="somos__text">
+      <h2 class="somos__title">QUIENES SOMOS</h2>
+      <section class="somos__container">
+        <p class="somos__p1">
+          <span class="bold color--red"
+            >DESCARTES ENGINEERING COMPANY DKART C.A</span
+          >, es una empresa ecuatoriana con 10 años en el mercado en la
+          prestación de servicios especializados en levantamientos topográficos
+          y geodésicos, así como consultorías en catastros urbanos y rurales,
+          planes de movilidad; todo esto utilizando equipos de última tecnología
+          y procedimientos que aseguran la más alta precisión y confiabilidad en
+          nuestros proyectos.
+        </p>
+        <p class="somos__p2">
+          Desarrollamos los trabajos de campo y gabinete con instrumentos y
+          software de última generación, de forma que los rendimientos obtenidos
+          permitan alcanzar objetivos de trabajo en campo con los menores plazos
+          de ejecución y efectividad.
+        </p>
+        <p class="somos__p3">
+          <span class="bold color--red">DKART C.A.</span>, mantiene la
+          representación para el Ecuador de diferentes marcas de prestigio en el
+          ámbito topográfico y geodésico, brindando respaldo técnico a nuestros
+          clientes.
+        </p>
+      </section>
+    </section>
+    <section class="somos__imgs">
+      <CarruselGeneral client:load imgs={imgs2} />
+    </section>
+  </article>
+  <article class="services flex--col--nowrap">
+    <h2 class="services__title">NUESTROS SERVICIOS</h2>
+    <section class="services__container">
+      {
+        titles.map((t, index) => {
+          return <CardSer titles={t} imgs={imgs3[index]} />;
+        })
+      }
+    </section>
+  </article>
+  <article class="products flex--col--nowrap">
+    <h2 class="products__title">VENTA DE EQUIPOS</h2>
+    <CardProd />
+  </article>
+  <article class="accs flex--col--nowrap">
+    <h2 class="accs__title">ACCESORIOS</h2>
+    <section class="acc__container">
+      {
+        tAccs.map((t, index) => {
+          return <CardAcc titles={t} imgs={imgs4[index]} />;
+        })
+      }
+    </section>
+  </article>
+  <article class="repr flex--col--nowrap">
+    <h2 class="rep__title">REPRESENTACIONES INTERNACIONALES</h2>
+    <section class="rep__container">
+      {
+        imgs5.map((r, index) => {
+          return (
+            <picture class="rep__item">
+              <img src={r} alt={"image" + index} class="rep__img" />
+            </picture>
+          );
+        })
+      }
+    </section>
+  </article>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/gn1splJcTDU?si=HCdMoUxH6__8i1Sj"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen></iframe>
 </Layout>
 
 <style>
-    .somos{
-        width: 100%;
-        height: 700px;
-        max-width: 1300px;
-        margin: 0px auto;
-        justify-content: space-around;
-        align-items: center;
-    }
-    .somos__text{
-        width: 42%;
-        padding: 20px;
-    }
-    .somos__title{
-        font-size: 30px;
-        margin-bottom: 12px;
-    }
-    .somos__p1, .somos__p2{
-        margin-bottom: 12px;
-    }
-    .somos__p1, .somos__p2, .somos__p3{
-        line-height: 1.6;
-    }
-    .somos__imgs{
-        width: 40%;
-        height: 70%;
-    }
+  .somos {
+    width: 100%;
+    height: 700px;
+    max-width: 1300px;
+    margin: 0px auto;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .somos__text {
+    width: 42%;
+    padding: 20px;
+  }
+  .somos__title {
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+  .somos__p1,
+  .somos__p2 {
+    margin-bottom: 12px;
+  }
+  .somos__p1,
+  .somos__p2,
+  .somos__p3 {
+    line-height: 1.6;
+  }
+  .somos__imgs {
+    width: 40%;
+    height: 70%;
+  }
 
-    /* SERVICES */
-    .services{
-        max-width: 1300px;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    .services__title{
-        font-size: 30px;
-        border-bottom: 2px solid #672434;
-        padding-bottom: 5px;
-        z-index: 2;
-    }
-    .services__container{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3,1fr);
-        border-top: 1px solid #a3a3a3c2;
-        padding-top: 30px;
-        gap: 50px;
-        width: 100%;
-        place-items: center;
-    }
+  /* SERVICES */
+  .services {
+    max-width: 1300px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .services__title {
+    font-size: 30px;
+    border-bottom: 2px solid #672434;
+    padding-bottom: 5px;
+    z-index: 2;
+  }
+  .services__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border-top: 1px solid #a3a3a3c2;
+    padding-top: 30px;
+    gap: 50px;
+    width: 100%;
+    place-items: center;
+  }
 
-    /* PRODUCTS */
-    .products{
-        max-width: 1300px;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-        margin-top: 60px;
-    }
-    .products__title{
-        font-size: 30px;
-        border-bottom: 2px solid #672434;
-        padding-bottom: 5px;
-        z-index: 2;
-    }
+  /* PRODUCTS */
+  .products {
+    max-width: 1300px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 60px;
+  }
+  .products__title {
+    font-size: 30px;
+    border-bottom: 2px solid #672434;
+    padding-bottom: 5px;
+    z-index: 2;
+  }
 
-    /* ACCCESORIES */
-    .accs{
-        max-width: 1300px;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-        margin-top: 60px;
-    }
-    .accs__title{
-        font-size: 30px;
-        border-bottom: 2px solid #672434;
-        padding-bottom: 5px;
-        z-index: 2;
-    }
-    .acc__container{
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(180px,1fr));
-        grid-auto-rows: repeat(2,1fr); 
-        gap: 20px;
-        border-top: 1px solid #a3a3a3c2;
-        padding-top: 30px;
-        place-content: center;
-    }
+  /* ACCCESORIES */
+  .accs {
+    max-width: 1300px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 60px;
+  }
+  .accs__title {
+    font-size: 30px;
+    border-bottom: 2px solid #672434;
+    padding-bottom: 5px;
+    z-index: 2;
+  }
+  .acc__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
+    grid-auto-rows: repeat(2, 1fr);
+    gap: 20px;
+    border-top: 1px solid #a3a3a3c2;
+    padding-top: 30px;
+    place-content: center;
+  }
 
-    /* REPRESENTATIONS */
-    .repr{
-        max-width: 1300px;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-        margin-top: 60px;
+  /* REPRESENTATIONS */
+  .repr {
+    max-width: 1300px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 60px;
+  }
+  .rep__title {
+    font-size: 30px;
+    border-bottom: 2px solid #672434;
+    padding-bottom: 5px;
+    z-index: 2;
+  }
+  .rep__container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-around;
+    column-gap: 120px;
+    row-gap: 40px;
+    align-items: center;
+    border-top: 1px solid #a3a3a3c2;
+    padding-top: 60px;
+  }
+  .rep__img {
+    width: 250px;
+    height: 120px;
+    object-fit: contain;
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 1200px) and (min-width: 700px) {
+    .somos {
+      width: 100%;
+      height: max-content;
+      justify-content: space-around;
+      align-items: center;
     }
-    .rep__title{
-        font-size: 30px;
-        border-bottom: 2px solid #672434;
-        padding-bottom: 5px;
-        z-index: 2;
+    .somos__text {
+      width: 42%;
+      padding: 20px;
     }
-    .rep__container{
-        display: flex;
-        flex-flow: row wrap;
-        width: 100%;
-        justify-content: space-around;
-        column-gap: 120px;
-        row-gap: 40px;
-        align-items: center;
-        border-top: 1px solid #a3a3a3c2;
-        padding-top: 60px;
+    .somos__title {
+      font-size: 30px;
+      margin-bottom: 12px;
     }
-    .rep__img{
-        width: 250px;
-        height: 120px;
-        object-fit: contain;
+    .somos__p1,
+    .somos__p2 {
+      margin-bottom: 12px;
     }
+    .somos__p1,
+    .somos__p2,
+    .somos__p3 {
+      line-height: 1.6;
+    }
+    .somos__imgs {
+      width: 40%;
+      height: 70%;
+    }
+  }
 </style>
