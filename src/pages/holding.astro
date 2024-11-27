@@ -1,188 +1,261 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const boadaLinks=[
-    {
-        name: "www.trofeosboada.com",
-        link: true,
-        href: "https://trofeosboada.com/index.php",
-        icon: "/icons/web-b.png"
-    },
-    {
-        name: "Trofeos BOADA",
-        link: true,
-        href: "https://www.facebook.com/p/Trofeos-BOADA-100069565383816/",
-        icon: "/icons/fb-b.png"
-    },
-    {
-        name: "Trofeos Boada",
-        link: true,
-        href: "https://www.instagram.com/trofeosboada/",
-        icon: "/icons/ig-b.png"
-    },
-    {
-        name: "Whatsapp",
-        link: true,
-        href: "https://api.whatsapp.com/send/?phone=593985597331&text&type=phone_number&app_absent=0",
-        icon: "/icons/wp-b.png"
-    },
-    {
-        name: "(593) 2 2401 767",
-        link: false,
-        href: "/",
-        icon: "icons/tel-b.png"
-    },
-    {
-        name: "info@trofeosboada.com",
-        link: false,
-        href: "/",
-        icon: "/icons/email-b.png"
-    }
-]
+const boadaLinks = [
+  {
+    name: "www.trofeosboada.com",
+    link: true,
+    href: "https://trofeosboada.com/index.php",
+    icon: "/icons/web-w.png",
+  },
+  {
+    name: "Trofeos BOADA",
+    link: true,
+    href: "https://www.facebook.com/p/Trofeos-BOADA-100069565383816/",
+    icon: "/icons/fb-w.png",
+  },
+  {
+    name: "Trofeos Boada",
+    link: true,
+    href: "https://www.instagram.com/trofeosboada/",
+    icon: "/icons/ig-w.png",
+  },
+  {
+    name: "Whatsapp",
+    link: true,
+    href: "https://api.whatsapp.com/send/?phone=593985597331&text&type=phone_number&app_absent=0",
+    icon: "/icons/wpp-w.png",
+  },
+  {
+    name: "(593) 2 2401 767",
+    link: false,
+    href: "/",
+    icon: "icons/tel-w.png",
+  },
+  {
+    name: "info@trofeosboada.com",
+    link: false,
+    href: "/",
+    icon: "/icons/email-w.png",
+  },
+];
 
-const porteroLinks=[
-    {
-        name: "Portero&Portero arquitectos",
-        link: true,
-         href: "https://www.facebook.com/portero.arquitectos?locale=es_LA",
-        icon: "/icons/fb-b.png"
-    },
-    {
-        name: "099 946 8644",
-        link: true,
-        href: "https://api.whatsapp.com/send/?phone=593999468644&text&type=phone_number&app_absent=0",
-        icon: "/icons/wp-b.png"
-    },
-    {
-        name: "dj_portero@hotmail.com",
-        link: false,
-        href: "/",
-        icon: "/icons/email-b.png"
-    }
-]
+const porteroLinks = [
+  {
+    name: "Portero&Portero arquitectos",
+    link: true,
+    href: "https://www.facebook.com/portero.arquitectos?locale=es_LA",
+    icon: "/icons/fb-w.png",
+  },
+  {
+    name: "099 946 8644",
+    link: true,
+    href: "https://api.whatsapp.com/send/?phone=593999468644&text&type=phone_number&app_absent=0",
+    icon: "/icons/wpp-w.png",
+  },
+  {
+    name: "dj_portero@hotmail.com",
+    link: false,
+    href: "/",
+    icon: "/icons/email-w.png",
+  },
+];
 ---
 
 <Layout title="Holding">
-    <article class="band">
-        <h1 class="band__title">
-            Holding de Empresas
-        </h1>
-    </article>
-    <article class="holding__container flex--col--nowrap">
-        <section class="holding__card flex--row--wrap">
-            <picture class="holding__pic">
-                <img src="/images/h1.png" alt="" class="holding__img">
-            </picture>
-            <section class="holding__text">
-                <h2 class="holding__title">
-                    Trofeos Boada
-                </h2>
-                <section class="holding__links">
-                    {boadaLinks.map((l,index)=>{
-                        if(l.link){
-                            return <a href={l.href} class="holding__link flex--row--nowrap">
-                            <img src={l.icon} alt={"icon " + l.name} class="holding__icon">
-                            <p class="">
-                                {l.name}
-                            </p>
-                        </a>
-                        }
-                        return <div class="holding__link flex--row--nowrap">
-                            <img src={l.icon} alt={"icon " + l.name} class="holding__icon">
-                            <p class="">
-                                {l.name}
-                            </p>
-                        </div>
-                    })}
-                </section>
-            </section>
+  <article class="band">
+    <h1 class="band__title">Holding de Empresas</h1>
+  </article>
+  <article class="holding__container flex--row--wrap">
+    <section class="holding__card flex--row--wrap">
+      <picture class="holding__pic">
+        <img src="/images/h1.png" alt="" class="holding__img" />
+      </picture>
+      <section class="holding__text flex--col--nowrap">
+        <h2 class="holding__title">Trofeos Boada</h2>
+        <section class="holding__links">
+          {
+            boadaLinks.map((l, index) => {
+              if (l.link) {
+                return (
+                  <a href={l.href} class="holding__link flex--row--nowrap">
+                    <img
+                      src={l.icon}
+                      alt={"icon " + l.name}
+                      class="holding__icon"
+                    />
+                    <p class="">{l.name}</p>
+                  </a>
+                );
+              }
+              return (
+                <div class="holding__link flex--row--nowrap">
+                  <img
+                    src={l.icon}
+                    alt={"icon " + l.name}
+                    class="holding__icon"
+                  />
+                  <p class="">{l.name}</p>
+                </div>
+              );
+            })
+          }
         </section>
-        <section class="holding__card flex--row--wrap">
-            <picture class="holding__pic">
-                <img src="/images/h2.png" alt="" class="holding__img">
-            </picture>
-            <section class="holding__text">
-                <h2 class="holding__title">
-                    Portero Arquitectos
-                </h2>
-                <section class="holding__links">
-                    {porteroLinks.map((lp,index)=>{
-
-                        return <a href={lp.href} class="holding__link flex--row--nowrap">
-                            <img src={lp.icon} alt={"icon " + lp.name} class="holding__icon">
-                            <p>
-                                {lp.name}
-                            </p>
-                        </a>
-                    })}
-                </section>
-            </section>
+      </section>
+    </section>
+    <section class="holding__card flex--rowreverse--wrap">
+      <picture class="holding__pic">
+        <img src="/images/h2.png" alt="" class="holding__img" />
+      </picture>
+      <section class="holding__text flex--col--nowrap">
+        <h2 class="holding__title">Portero Arquitectos</h2>
+        <section class="holding__links">
+          {
+            porteroLinks.map((lp, index) => {
+              return (
+                <a href={lp.href} class="holding__link flex--row--nowrap">
+                  <img
+                    src={lp.icon}
+                    alt={"icon " + lp.name}
+                    class="holding__icon"
+                  />
+                  <p>{lp.name}</p>
+                </a>
+              );
+            })
+          }
         </section>
-    </article>
+      </section>
+    </section>
+  </article>
 </Layout>
 
 <style>
-    .band{
-        background-color: var(--black);
-        width: 100%;
-        height: 200px;
-        display: grid;
-        place-items: center;
+  .band {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    display: grid;
+    place-items: center;
+    background-color: var(--black);
+  }
+  .band__title {
+    color: var(--white);
+    font-size: 60px;
+  }
+  .holding__container {
+    gap: 80px;
+    padding-top: 20px;
+    width: 100%;
+    justify-content: space-around;
+    align-items: space-around;
+    background-color: var(--black);
+    color: var(--white);
+    padding-bottom: 30px;
+  }
+  .holding__card {
+    gap: 20px;
+    width: max-content;
+  }
+  .holding__pic {
+    width: 450px;
+    height: 350px;
+    border-radius: 10px;
+    background-color: var(--white);
+    border: 1.5px solid var(--black);
+  }
+  .holding__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .holding__text {
+  }
+  .holding__title {
+    font-size: 30px;
+    border-bottom: 2px solid var(--white);
+    padding-bottom: 5px;
+    z-index: 2;
+    min-width: 320px;
+  }
+  .holding__links {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 80%;
+    justify-content: center;
+    gap: 15px;
+  }
+  .holding__icon {
+    width: 20px;
+    height: 20px;
+  }
+  .holding__link {
+    align-items: center;
+    gap: 10px;
+  }
+  .holding__link:hover {
+    opacity: 0.8;
+    transition: all ease-in 0.3s;
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 1200px) and (min-width: 700px) {
+    .band__title {
+      color: var(--white);
+      font-size: 45px;
+      text-align: center;
     }
-    .band__title{
-        color: var(--white);
-        font-size: 60px;
+    .holding__card {
+      gap: 20px;
+      width: max-content;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column nowrap;
     }
-    .holding__container{
-        gap: 40px;
-        padding-top: 30px;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
+    .holding__container {
+      justify-content: center;
+      align-items: center;
+      flex-flow: column nowrap;
     }
-    .holding__card{
-        gap: 20px;
+    .holding__pic {
+      width: 600px;
+      height: 270px;
     }
-    .holding__pic{
-        width: 450px;
-        height: 350px;
-        border-radius: 10px;
-        background-color: rgb(255, 255, 255);
-        border: 1.5px solid var(--black);
+    .holding__title {
+      min-width: unset;
     }
-    .holding__img{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+    .holding__text {
+      gap: 20px;
     }
-    .holding__text{
-        max-width: 800px;
-        min-width: 500px
+    .holding__link {
+      justify-content: center;
     }
-    .holding__title{
-        font-size: 30px;
-        border-bottom: 2px solid #672434;
-        padding-bottom: 5px;
-        z-index: 2;
-        min-width: 320px;
+  }
+  @media (max-width: 700px) {
+    .band__title {
+      color: var(--white);
+      font-size: 45px;
+      text-align: center;
     }
-    .holding__links{
-        display: flex;
-        flex-flow: column nowrap;
-        height: 80%;
-        justify-content: center;
-        gap: 15px;
+    .holding__card {
+      gap: 20px;
+      width: max-content;
+      justify-content: center;
+      align-items: center;
     }
-    .holding__icon{
-        width: 20px;
-        height: 20px;
+    .holding__pic {
+      width: 90%;
+      max-width: 500px;
+      height: 250px;
     }
-    .holding__link{
-        align-items: center;
-        gap: 10px;
+    .holding__title {
+      min-width: unset;
     }
-    .holding__link:hover{
-        opacity: 0.8;
-        transition: all ease-in 0.3s;
+    .holding__text {
+      gap: 20px;
     }
+    .holding__link {
+      justify-content: center;
+    }
+  }
 </style>
