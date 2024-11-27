@@ -1,68 +1,280 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-
-const links=[
-    {
-
-    },
-    {
-
-    }
-]
+const links = [
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/DKART.EC",
+    img: "/icons/fb-b.png",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/dkart_ec/",
+    img: "/icons/ig-b.png",
+  },
+  {
+    name: "Whatsapp",
+    href: "https://wa.me/5930994954690",
+    img: "/icons/ig-b.png",
+  },
+  {
+    name: "TikTok",
+    href: "https://www.tiktok.com/@dkart_ec",
+    img: "/icons/tiktok-b.png",
+  },
+  {
+    name: "Youtube",
+    href: "https://www.youtube.com/@descartesengineering4341",
+    img: "/icons/yt-b.png",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/descartes-engineering-dkart-9602571a5/",
+    img: "/icons/in-b.png",
+  },
+  {
+    name: "Twitter",
+    href: "https://x.com/DkartEc",
+    img: "/icons/x-b.png",
+  },
+];
 ---
 
 <Layout title="Contacto">
-    <article class="flex--row--wrap">
-        <article>
-            <section>
-                <h2>
-                    DESCARTES ENGINEERING COMPANY DKART C.A
-                </h2>
-                <p>
-                    Quito-Ecuador
-                </p>
-            </section>
-            <section>
-                <div>
-                    <h3>
-                        Número de Teléfono:
-                    </h3>
-                    <p>
-                        +593 994 954 690 
-                    </p>
-                </div>
-                <div>
-                    <h3>
-                        Correo Electrónico:
-                    </h3>
-                    <p>
-                        pablo.dkart@gmail.com 
-                    </p>
-                </div>
-                <div>
-                    <h3>
-                        Redes Sociales
-                    </h3>
-                    <div>
-                        <a href="">
-                            <img src="" alt="">
-                            Facebook
-                        </a>
-                        <a href="">
-                            <img src="" alt="">
-                            Instagram
-                        </a>
-                        <a href="">
-                            <img src="" alt="">
-                            Whatsapp
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </article>
-        <article>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d997.4512486626734!2d-78.4773983!3d-0.1480833!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59aaafab6a1b5%3A0x2e0d91be8de27288!2sDKART!5e0!3m2!1ses!2sec!4v1732654360879!5m2!1ses!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </article>
+  <section class="band">
+    <h1 class="band__title">Contacto</h1>
+  </section>
+  <article class="contacto__container">
+    <article class="contacto__text">
+      <section class="contacto__head flex--col--nowrap">
+        <h2 class="contacto__title">DESCARTES ENGINEERING COMPANY DKART C.A</h2>
+        <p>Quito-Ecuador</p>
+        <p>http://www.dkartcompany.com</p>
+      </section>
+      <section class="contacto__foot flex--col--nowrap">
+        <div>
+          <h3 class="contacto__subtitle">Número de Teléfono:</h3>
+          <p>+593 994 954 690</p>
+        </div>
+        <div>
+          <h3 class="contacto__subtitle">Correo Electrónico:</h3>
+          <p>pablo.dkart@gmail.com</p>
+        </div>
+        <div class="contacto__redes">
+          <h3 class="contacto__subtitle">Redes Sociales:</h3>
+          <div class="contacto__links flex--row--wrap">
+            {
+              links.map((l, index) => {
+                return (
+                  <a href={l.href} class="contacto__button flex--row--nowrap">
+                    <img
+                      src={l.img}
+                      alt={l.name + " icon"}
+                      class="contacto__icon"
+                    />
+                    {l.name}
+                  </a>
+                );
+              })
+            }
+          </div>
+        </div>
+      </section>
     </article>
+    <article class="contacto__ubi flex--col--nowrap">
+      <h2 class="contacto__title">ENCUENTRANOS</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d997.4512486626734!2d-78.4773983!3d-0.1480833!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59aaafab6a1b5%3A0x2e0d91be8de27288!2sDKART!5e0!3m2!1ses!2sec!4v1732654360879!5m2!1ses!2sec"
+        class="contacto__map"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <a
+        href="https://www.google.com/maps?ll=-0.148178,-78.477397&z=18&t=m&hl=es&gl=EC&mapclient=embed&cid=3318468748052165256"
+        class="contacto__button flex--row--nowrap"
+      >
+        <img src="/icons/map-b.png" alt="map-icon" class="contacto__icon" />
+        Ver en el mapa
+      </a>
+    </article>
+  </article>
 </Layout>
+
+<style>
+  .band {
+    width: 100%;
+    height: 270px;
+    display: grid;
+    place-items: center;
+    background-image: url("/images/main2.png");
+    background-size: cover;
+    background-position: top;
+    filter: grayscale(100%);
+  }
+  .band__title {
+    color: var(--white);
+    font-size: 60px;
+    background-color: rgba(31, 31, 31, 0.534);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+  .contacto__container {
+    background-color: var(--black);
+    color: var(--white);
+    height: 700px;
+    width: 100%;
+    padding: 60px 30px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    place-items: center;
+  }
+  .contacto__text {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-content: center;
+    padding: 20px;
+    border-right: 2px solid var(--white);
+  }
+  .contacto__map {
+    width: 80%;
+    height: 400px;
+  }
+  .contacto__head {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 15px;
+    margin-bottom: 17px;
+  }
+  .contacto__foot {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 15px;
+  }
+  .contacto__title {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .contacto__subtitle {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .contacto__button {
+    background-color: var(--white);
+    color: var(--black);
+    width: max-content;
+    min-width: 120px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  .contacto__button:hover {
+    transform: scale(1.05);
+    transition: all ease 0.3s;
+  }
+  .contacto__links {
+    gap: 15px;
+    max-width: 600px;
+  }
+  .contacto__icon {
+    width: 18px;
+    height: 18px;
+  }
+  .contacto__ubi {
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 1200px) and (min-width: 700px) {
+    .band__title {
+      font-size: 45px;
+      text-align: center;
+    }
+    .contacto__container {
+      height: max-content;
+      width: 100%;
+      padding: 50px 20px;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0px;
+    }
+    .contacto__text {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      place-content: center;
+      padding: 20px;
+      border-bottom: 2px solid var(--white);
+      border-right: unset;
+      padding-bottom: 40px;
+    }
+    .contacto__links {
+      max-width: 700px;
+    }
+    .contacto__ubi {
+      align-items: flex-start;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+    }
+    .contacto__map {
+      width: 90%;
+      height: 420px;
+    }
+  }
+  @media (max-width: 700px) {
+    .band__title {
+      font-size: 45px;
+      text-align: center;
+    }
+    .contacto__container {
+      height: max-content;
+      width: 100%;
+      padding: 20px 0px;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0px;
+    }
+    .contacto__text {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      place-content: center;
+      padding: 20px;
+      border-bottom: 2px solid var(--white);
+      border-right: unset;
+      padding-bottom: 40px;
+    }
+    .contacto__links {
+      max-width: 700px;
+    }
+    .contacto__ubi {
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 0px;
+    }
+    .contacto__map {
+      width: 95%;
+      height: 380px;
+    }
+    .contacto__links {
+    justify-content: center;
+    }
+  }
+</style>
