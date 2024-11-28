@@ -1,0 +1,258 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Band from "../components/Band.astro";
+
+const videos = [
+  {
+    title: "Presentación o unboxing del drone Matrice 300 de la marca DJI",
+    url: "gn1splJcTDU?si=fdJjQdHltLdAj-3d",
+    desc: "Presentación en Ecuador del drone Matrice 300 de la marca DJI a cargo de los técnicos de la empresa DKART (DESCARTES ENGINEERING COMPANY)",
+  },
+  {
+    title:
+      "Aluvión en el sector La Comuna - Av. La Gasca y Pambachupa. | DKART",
+    url: "5lSqPb7X718",
+    desc: "El día lunes 31 de enero se produjo un ALUVIÓN en los sectores de La Comuna y Av. La Gasca, causando caos entre sus moradores. La corriente del ALUVIÓN se fue llevando todo a su paso; así está la `Zona Cero`` del ALUVIÓN en Quito 2 días después del desastre...",
+  },
+  {
+    title: "Fundición de losa de Portero Arquitectos",
+    url: "SJa-m1mr2iI",
+    desc: "Portero Arquitectos plasmando tus sueños en el mundo real... Fundición de losa de un edificio en el norte de Quito.",
+  },
+  {
+    title: "Unboxing Estación Toral Arc5 Pro. Marca SANDING. | DKART",
+    url: "WlX3BmNT1Hw",
+    desc: "ARC 5 Pro, estación total para la medición de ángulos y distancias, está impulsada por un sofisticado software incorporado, proporciona varias aplicaciones esenciales en el trabajo de topografía que le permite manipular el equipo de manera efectiva, como configurar la compensación de inclinación de la estación total, COGO, visualización de datos, calibración de transferencia, etc.",
+  },
+  {
+    title:
+      "ESTACIÓN TOTAL ARC 10 - MARCA SANDING EN DESCARTES ENGINEERING COMPANY. | DKART",
+    url: "xYnm9nP7-ac",
+    desc: "La exclusiva Estación Total de láser dual Gestión de energía inteligente Aplicación Androide a bordo Aplicaciones para túneles, puentes y carreteras.",
+  },
+  {
+    title: "DESCARTES ENGINEERING COMPANY Y SUS MARCAS EN REDES. | DKART",
+    url: "MyvA65MhsPo",
+    desc: "DESCARTES ENGINEERING COMPANY DKART C.A, es una empresa ecuatoriana con más de 10 años en el mercado de la prestación de servicios especializados en levantamientos topográficos y geodésicos, así como consultorías en catastros urbanos y rurales, planes de movilidad; todo esto utilizando equipos de última tecnología y procedimientos que aseguran la más alta precisión y confiabilidad en nuestros proyectos. DKART C.A., mantiene la representación para el Ecuador de diferentes marcas de prestigio en el ámbito topográfico y geodésico, brindando respaldo técnico a nuestros clientes.",
+  },
+  {
+    title:
+      "LA ARC5 DE SANDING SUPERA LA DISTANCIA DE 1 000 m EN SUS MEDICIONES SIN PRISMA. | DKART",
+    url: "P4UjCorng7c",
+    desc: "EN #ECUADOR #SANDING ES #DKART... TODO EN EQUIPOS Y ACCESORIOS PARA TOPOGRAFÍA...",
+  },
+  {
+    title: "DESCARTES ENGINEERING COMPANY VIDEO PROMOCIONAL. | DKART",
+    url: "_39_1JWQ5nE",
+    desc: "DESCARTES ENGINEERING COMPANY DKART C.A, es una empresa ecuatoriana con 10 años en el mercado en la prestación de servicios especializados en levantamientos topográficos y geodésicos, así como consultorías en catastros urbanos y rurales, planes de movilidad; todo esto utilizando equipos de última tecnología y procedimientos que aseguran la más alta precisión y confiabilidad en nuestros proyectos. ",
+  },
+  {
+    title:
+      "Kit de integración cámara multiespectral Micasense RedEdgeMX para dron DJI Inspire 1. | DKART",
+    url: "tgkUCE81hTk",
+    desc: "El video es un unboxing del kit de integración de la cámara multiespectral Micasense RedEdgeMX para dron DJI Inspire 1 y su respectiva instalación.",
+  },
+  {
+    title: "DRON DE ALA FIJA FIREFLY6 ARREGLO Y PRUEBA DE VUELO. | DKART",
+    url: "MImDjFyEYCI",
+    desc: "DESCARTES ENGINEERING COMPANY DKART C.A, empresa ecuatoriana con 10 años en el mercado en la prestación de servicios especializados en levantamientos topográficos y geodésicos, así como consultorías en catastros urbanos, rurales y planes de movilidad, todo esto utilizando equipos de última tecnología y procedimientos que aseguran la más alta precisión y confiabilidad en nuestros proyectos.",
+  },
+  {
+    title: "RENACEREMOS ITALIA - ECUADOR PABLO PORTERO. | DKART",
+    url: "Es6S2Bmf82g",
+    desc: "La pieza de Roby Facchinetti para latinoamericana. Un pensamiento de afecto y cercanía desde Bérgamo - Italia y llega directamente a Quito - Ecuador, y luego se extiende a toda Sudamérica y al mundo entero ... lugar el que nos acoge a todos y el único al que pertenecemos.",
+  },
+  {
+    title: "EL PANECILLO QUITO - ECUADOR. | DKART",
+    url: "GTJFa65rb6g",
+    desc: "Una vista del centro histórico en la ciudad de Quito - Ecuador. Video tomado desde la  `mitad del mundo` con el dron Phantom 4 V2.0 Pro ",
+  },
+];
+---
+
+<Layout title="Videoteca">
+  <Band title="Videoteca" img="/images/main2.png" />
+  <article class="video__container flex--col--nowrap">
+    {
+      videos.map((l, index) => {
+        return (
+          <section  class={
+                index % 2 == 0
+                  ? "video__bg--w"
+                  : "video__bg--b"
+              }>
+            <section
+              class={
+                index % 2 == 0
+                  ? "video--b video__card"
+                  : "video--w video__card reverse"
+              }
+            >
+              <section
+                class={index % 2 == 0 ? "video__text" : "video__text text--reverse"}
+              >
+                <h2 class="video__title">{l.title}</h2>
+                <p class="video__p">{l.desc}</p>
+                <a
+                  href={`https://www.youtube.com/watch?v=${l.url}`}
+                  class={index % 2 == 0 ? "button--b" : "button--w"}
+                >
+                  Ver en Youtube
+                </a>
+              </section>
+              <section class="video__yt">
+                <iframe
+                  class="video__frame"
+                  loading="lazy"
+                  src={`https://www.youtube.com/embed/${l.url}?modestbranding=1`}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                />
+              </section>
+            </section>
+          </section>
+        );
+      })
+    }
+  </article>
+
+ 
+</Layout>
+
+<style>
+    .video__container {
+      background-color: var(--black);
+      padding: 00px 0 0px;
+      width: 100%;
+    }
+    .video__card {
+      display: grid;
+      grid-template-columns: 45% 55%;
+      grid-template-rows: 100%;
+      height: 630px;
+      padding: 20px;
+      width: 100%;
+      place-items: center;
+      max-width: 1400px;
+    }
+    .reverse {
+      direction: rtl;
+      grid-auto-flow: row;
+    }
+    .video__text {
+      width: 100%;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      gap: 20px;
+      align-items: start;
+      padding: 0 25px;
+      grid-row: 1;
+    }
+    .text--reverse{
+        align-items: end;
+        text-align: end;
+    }
+    .video--b {
+      background-color: var(--black);
+      color: var(--white);
+    }
+    .video--w {
+      background-color: var(--white);
+      color: var(--black);
+    }
+    .video__yt {
+      width: 100%;
+      max-width: 650px;
+    }
+    .video__p {
+      max-width: 680px;
+    }
+    .video__frame {
+      width: 100%;
+      height: 400px;
+      border: none;
+      grid-row: 1;
+    }
+    .video__title {
+      max-width: 680px;
+      font-size: 35px;
+    }
+    .button--b {
+      background-color: var(--white);
+      color: var(--black);
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    .button--w {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    .video__bg--w{
+        width: 100%;
+        background-color: var(--black);
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .video__bg--b{
+        width: 100%;
+        background-color: var(--white);
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* MEDIA QUERIES */
+    @media (max-width: 1200px) and (min-width: 700px) {
+    .video__card {
+      display: flex;
+      flex-flow: column nowrap;
+      height: max-content;
+      padding: 40px 20px;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+    }
+    .video__text {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0;
+    }
+    }
+
+    @media (max-width: 700px){
+        .video__card {
+      display: flex;
+      flex-flow: column nowrap;
+      height: max-content;
+      padding: 30px 12px;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .video__text {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      gap: 15px;
+    }
+    .video__title{
+      font-size: 25px;
+    }
+    .video__frame{
+      height: 350px;
+    }
+    }
+    
+  </style>

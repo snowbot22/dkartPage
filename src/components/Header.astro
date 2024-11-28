@@ -1,12 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 export async function getSubfolders() {
   const entries = await getCollection("accesorios"); // Reemplaza "blog" con el nombre de tu colección
 
   // Extraer subcarpetas únicas de los slugs
   const subfolders = new Set();
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     const parts = entry.slug.split("/"); // Divide el slug por "/"
     if (parts.length > 1) {
       subfolders.add(parts[0]); // Agrega el nombre de la subcarpeta al conjunto
@@ -20,165 +20,187 @@ export async function getSubfolders() {
 const subfolders = await getSubfolders();
 console.log(subfolders); // Imprime una lista de subcarpetas únicas
 
- const links=[
- {
+const links = [
+  {
     name: "Inicio",
     link: "/",
-    submenu: null
- },
- {
+    submenu: null,
+  },
+  {
     name: "Equipos",
     link: "/",
-    submenu:[
-      {name: "Drones", link:"#"},
-      {name: "Cámaras Multiespectrales", link:"#"},
-      {name: "GNSS Y GPS", link:"#"},
-      {name: "Estación Total", link:"#"},
-      {name: "Nivel de Topografía", link:"#"}
-    ]
- },
- {
+    submenu: [
+      { name: "Drones", link: "#" },
+      { name: "Cámaras Multiespectrales", link: "#" },
+      { name: "GNSS Y GPS", link: "#" },
+      { name: "Estación Total", link: "#" },
+      { name: "Nivel de Topografía", link: "#" },
+    ],
+  },
+  {
     name: "Accesorios",
     link: "/",
-    submenu:[
-      {name: "Distanciometros Láser", link:"#"},
-      {name: "Trípodes", link:"#"},
-      {name: "Bastones y Bípodes", link:"#"},
-      {name: "Prismas - Miniprismas", link:"#"},
-      {name: "Miras Telestópicas", link:"#"},
-      {name: "Bases Nivelantes", link:"#"},
-      {name: "Baterías y Cargadores", link:"#"},
-      {name: "Otros", link:"#"},
-    ]
- },
- {
+    submenu: [
+      { name: "Distanciometros Láser", link: "#" },
+      { name: "Trípodes", link: "#" },
+      { name: "Bastones y Bípodes", link: "#" },
+      { name: "Prismas - Miniprismas", link: "#" },
+      { name: "Miras Telestópicas", link: "#" },
+      { name: "Bases Nivelantes", link: "#" },
+      { name: "Baterías y Cargadores", link: "#" },
+      { name: "Otros", link: "#" },
+    ],
+  },
+  {
     name: "Consultorias",
     link: "/",
-    submenu:[
-      {name: "Distanciometros Láser", link:"#"},
-      {name: "Geodésia", link:"#"},
-      {name: "Topografía", link:"#"},
-      {name: "Batimetría", link:"#"},
-      {name: "Fotogametría", link:"#"},
-      {name: "Diseño de Vías", link:"#"},
-      {name: "Cartografía", link:"#"},
-      {name: "Catastro", link:"#"},
-      {name: "Transporte", link:"#"},
-      {name: "Transferencia de Conocimientos", link:"#"}
-    ]
- },
- {
+    submenu: [
+      { name: "Distanciometros Láser", link: "#" },
+      { name: "Geodésia", link: "#" },
+      { name: "Topografía", link: "#" },
+      { name: "Batimetría", link: "#" },
+      { name: "Fotogametría", link: "#" },
+      { name: "Diseño de Vías", link: "#" },
+      { name: "Cartografía", link: "#" },
+      { name: "Catastro", link: "#" },
+      { name: "Transporte", link: "#" },
+      { name: "Transferencia de Conocimientos", link: "#" },
+    ],
+  },
+  {
     name: "Servicio Técnico",
     link: "/",
-    submenu: null
- },
- {
+    submenu: null,
+  },
+  {
     name: "Holding de empresas",
     link: "/holding",
-    submenu: null
- },
- {
+    submenu: null,
+  },
+  {
     name: "Contacto",
     link: "/contacto",
-    submenu: null
- },
- {
-   name: "Videoteca",
-   link: "/",
-   submenu: null
- }
- ]
+    submenu: null,
+  },
+  {
+    name: "Videoteca",
+    link: "/videoteca",
+    submenu: null,
+  },
+];
 
- const links2=[
-   {
-      name: "Servicio Técnico",
-      link: "/",
-      submenu: null
-   },
-   {
-      name: "Holding de empresas",
-      link: "/holding",
-      submenu: null
-   }
- ]
+const links2 = [
+  {
+    name: "Servicio Técnico",
+    link: "/",
+    submenu: null,
+  },
+  {
+    name: "Holding de empresas",
+    link: "/holding",
+    submenu: null,
+  },
+];
 
- const icons=[
-   "/icons/fb-w.png",
-   "/icons/ig-w.png",
-   "/icons/wpp-w.png"
- ]
+const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
 ---
 
 <header>
-   <section class="desktop__subnav">
-      <div class="subnav__container">
-         <div class="subnav__links">
-            <ul class="subnav__list flex--row--nowrap">
-               <li class="subnav__li">
-                  <a href="" class="subnav__link">
-                     Servicio Tecnico
-                  </a>
-               </li>
-               <li class="subnav__li">
-                  <a href="" class="subnav__link">
-                     Holding de Empresas
-                  </a>
-               </li>
-            </ul>
-         </div>
-         <div class="subnav__icons flex--row--nowrap">
-            {icons.map((i,index)=>{
-               return <a href="/">
-                  <img src={i} alt="" class="subnav__icon">
-               </a>
-            })}
-         </div>
+  <section class="desktop__subnav">
+    <div class="subnav__container">
+      <div class="subnav__links">
+        <ul class="subnav__list flex--row--nowrap">
+          <li class="subnav__li">
+            <a href="" class="subnav__link"> Servicio Tecnico </a>
+          </li>
+          <li class="subnav__li">
+            <a href="" class="subnav__link"> Holding de Empresas </a>
+          </li>
+        </ul>
       </div>
-   </section>   
-    <nav class="desktop__links">
-      <picture class="desktop__image">
-         <img src="/images/logo1.png" alt="dkart-logo" class="desktop__image">
-      </picture>
-      <ul class="desktop__list flex--row--nowrap">
-         {links.map((item, index) => (
-            <li class={item.name === "Servicio Técnico" || item.name === "Holding de empresas" ? "desktop__li tablet--hidden" : "desktop__li"}>
-              <a href={item.link} class={item.submenu !== null ? `desktop__a a--flex` : `desktop__a`}>
-               {item.name}
-               {item.submenu !== null && (
-                  <img src="/icons/arrow-down.png" alt="icon-arrow-down" class="desktop__icon">
-               )}
+      <div class="subnav__icons flex--row--nowrap">
+        {
+          icons.map((i, index) => {
+            return (
+              <a href="/">
+                <img src={i} alt="" class="subnav__icon" />
               </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+  <nav class="desktop__links">
+    <picture class="desktop__image">
+      <img src="/images/logo1.png" alt="dkart-logo" class="desktop__image" />
+    </picture>
+    <ul class="desktop__list flex--row--nowrap">
+      {
+        links.map((item, index) => (
+          <li
+            class={
+              item.name === "Servicio Técnico" ||
+              item.name === "Holding de empresas"
+                ? "desktop__li tablet--hidden"
+                : "desktop__li"
+            }
+          >
+            <a
+              href={item.link}
+              class={
+                item.submenu !== null ? `desktop__a a--flex` : `desktop__a`
+              }
+            >
+              {item.name}
               {item.submenu !== null && (
-                <ul class="desktop__submenu">
-                  {item.submenu.map((subItem, subIndex) => (
-                    <li class="submenu-item">
-                      <a href={subItem.link}>{subItem.name}</a>
-                    </li>
-                  ))}
-                </ul>
+                <img
+                  src="/icons/arrow-down.png"
+                  alt="icon-arrow-down"
+                  class="desktop__icon"
+                />
               )}
-            </li>
-          ))}
-      </ul>
-    </nav>
-    <nav class="mobile__links">
-      <picture class="mobile__menu">
-         <img src="/icons/menu-b.png" alt="dkart-logo" class="mobile__menu">
-      </picture>
-       <picture class="mobile__image">
-         <img src="/images/logo1.png" alt="dkart-logo" class="mobile__image">
-      </picture>
-      <div class="mobile__submenu flex--col--nowrap">
-         <img src="/icons/close-w.png" alt="close-window" class="mobile__close">
-         <ul class="mobile__submenu__list">
-            {links.map((item, index) => (
+            </a>
+            {item.submenu !== null && (
+              <ul class="desktop__submenu">
+                {item.submenu.map((subItem, subIndex) => (
+                  <li class="submenu-item">
+                    <a href={subItem.link}>{subItem.name}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <nav class="mobile__links">
+    <picture class="mobile__menu">
+      <img src="/icons/menu-b.png" alt="dkart-logo" class="mobile__menu" />
+    </picture>
+    <picture class="mobile__image">
+      <img src="/images/logo1.png" alt="dkart-logo" class="mobile__image" />
+    </picture>
+    <div class="mobile__submenu flex--col--nowrap">
+      <img src="/icons/close-w.png" alt="close-window" class="mobile__close" />
+      <ul class="mobile__submenu__list">
+        {
+          links.map((item, index) => (
             <li class="mobile__li">
-              <a href={item.link} class={item.submenu !== null ? `mobile__a` : `mobile__a`}>
-               {item.name}
+              <a
+                href={item.link}
+                class={item.submenu !== null ? `mobile__a` : `mobile__a`}
+              >
+                {item.name}
               </a>
               {item.submenu !== null && (
-                  <img src="/icons/arrow-w.png" alt="icon-arrow-down" class="mobile__icon">
-               )}
+                <img
+                  src="/icons/arrow-w.png"
+                  alt="icon-arrow-down"
+                  class="mobile__icon"
+                />
+              )}
               {item.submenu !== null && (
                 <ul class="desktop__submenu">
                   {item.submenu.map((subItem, subIndex) => (
@@ -189,261 +211,262 @@ console.log(subfolders); // Imprime una lista de subcarpetas únicas
                 </ul>
               )}
             </li>
-          ))}
-         </ul>
-      </div>
-    </nav>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
 </header>
 
-<style >
-   header{
-      width: 100%;
-   }
-   .desktop__links{
-      width: 100%;
-      height: max-content;
-      gap: 0px;
-      justify-content: space-between;
-      padding: 10px 20px;
-      display: grid;
-      grid-template-columns: 20% 80%;
-      grid-template-rows: 100%;
-      align-items: center;
-      justify-items: center;
-      max-width: 1450px;
-      margin: 0 auto;
-   }
-   .desktop__subnav{
-      background-color: #222;
-      width: 100%;
-      height: 40px;
-   }
-   .subnav__container{
-      background-color: ;
-      width: 100%;
-      max-width: 1320px;
-      margin: 0 auto;
-      height: 100%;
-      display: grid;
-      align-items: center;
-   }
-   .subnav__icons{
-      background-color: ;
-      width: max-content;
-      gap: 17px;
-      align-items: center;
-      justify-content: center;
-      justify-self: flex-end;
-   }
-   .subnav__icon{
-      width: 20px;
-      height: 75%;
-   }
-   .subnav__icon:hover{
-      opacity: 0.9;
-   }
-   .desktop__image{
-      width: 240px;
-      height: 100px;
-      object-fit: contain;
-      justify-self: end;
-   }
-   .desktop__list{
-      height: 40px;
-   }
-   .desktop__li{
-      padding: 0 0px;
-   }
-   .desktop__a{
-      padding: 10px 15px;
-      font-weight: bold;
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      justify-content: center;
-   }
-   .desktop__icon{
-      width: 15px;
-      height: 10px;
-   }
-   .desktop__submenu{
-      display: none;
-   }
-   .desktop__li:hover .desktop__submenu{
-      display: none;
-   }
-   .desktop__a:hover{
-      border-bottom: 2px solid #672434;
-   }
-  
-   .a--flex{
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-   }
+<style>
+  header {
+    width: 100%;
+  }
+  .desktop__links {
+    width: 100%;
+    height: max-content;
+    gap: 0px;
+    justify-content: space-between;
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 100%;
+    align-items: center;
+    justify-items: center;
+    max-width: 1450px;
+    margin: 0 auto;
+  }
+  .desktop__subnav {
+    background-color: #222;
+    width: 100%;
+    height: 40px;
+  }
+  .subnav__container {
+    background-color:;
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    height: 100%;
+    display: grid;
+    align-items: center;
+  }
+  .subnav__icons {
+    background-color:;
+    width: max-content;
+    gap: 17px;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-end;
+  }
+  .subnav__icon {
+    width: 20px;
+    height: 75%;
+  }
+  .subnav__icon:hover {
+    opacity: 0.9;
+  }
+  .desktop__image {
+    width: 240px;
+    height: 100px;
+    object-fit: contain;
+    justify-self: end;
+  }
+  .desktop__list {
+    height: 40px;
+  }
+  .desktop__li {
+    padding: 0 0px;
+  }
+  .desktop__a {
+    padding: 10px 15px;
+    font-weight: bold;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .desktop__icon {
+    width: 15px;
+    height: 10px;
+  }
+  .desktop__submenu {
+    display: none;
+  }
+  .desktop__li:hover .desktop__submenu {
+    display: none;
+  }
+  .desktop__a:hover {
+    border-bottom: 2px solid #672434;
+  }
 
-   .subnav__links{
-      display: none;
-   }
-   .mobile__links{
-      display: none;
-   }
+  .a--flex {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
 
-   /* MEDIA QUERIES */
-   @media (max-width: 1200px) and (min-width: 700px) {
-      .desktop__links{
+  .subnav__links {
+    display: none;
+  }
+  .mobile__links {
+    display: none;
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 1200px) and (min-width: 700px) {
+    .desktop__links {
       padding: 10px;
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
       justify-content: center;
-      }
-      .tablet--hidden{
-         display: none;
-      }
-      .subnav__container{
-         padding: 0 30px;
-         display: flex;
-         flex-flow: row;
-         justify-content: space-between;
-      }
-      .subnav__links{
-         display: flex;
-         width: max-content;
-         height: 100%;
-      }
-      .subnav__list{
-         height: 100%;
-         align-items: center;
-      }
-      .subnav__li{
-         height: 100%;
-      }
-      .subnav__link{
-         height: 40px;
-         display: flex;
-         flex-flow: row;
-         justify-content: center;
-         align-items: center;
-         padding: 10px;
-         color: var(--white);
-      }
-      .subnav__li:last-child{
-         border-left: 1px solid var(--white);
-      }
-   }
-   
-   @media (max-width: 700px) {
-      .desktop__links{
-         display: none;
-      }
-      .mobile__links{
-         display: grid;
-         grid-template-columns: 25% 50% 20%;
-         grid-template-rows: 100%;
-         place-items: center;
-         position: relative;
-      }
-      .mobile__image{
-         width: 100%;
-         max-width: 200px;
-         height: 100px;
-         object-fit: contain;         
-      }
-      .mobile__menu{
-        justify-self: center;
-        width: 75%;
-        max-width: 80px;
-        object-fit: cover;
-      }
-      .subnav__container{
-         padding: 0 30px;
-         display: flex;
-         flex-flow: row;
-         justify-content: space-between;
-      }
-      .mobile__submenu{
-         position: fixed;
-         top: 0;
-         bottom: 0;
-         background-color: var(--black);
-         z-index: 4;
-         width: 100%;
-         height: 100%;
-         justify-content: center;
-         align-items: center;
-         opacity: 0; /* Inicialmente oculto */
-         visibility: hidden; /* No ocupa espacio */
-         transition: opacity 0.3s ease, visibility 0.3s ease;
-         display: grid;
-         grid-template-columns: 100%;
-         grid-template-rows: 10% 90%;
-         padding: 0 10px;
-      }
-      .mobile__close{
-         width: 60px;
-         justify-self: end;
-         margin: 10px 10px 0 0;
-      }
-      .mobile__submenu__list{
-         display: grid;
-         grid-template-rows: repeat(auto-fit, minmax(max-content;, 1fr));
-         grid-row: 2;
-         grid-column: 1;
-         width: 100%;
-         height: 100%;
-         place-items: center;
-      }
-      .mobile__li{
-         width: 100%;
-         height: 100%;
-         display: grid;
-         grid-template-columns: 75% 25%;
-         grid-template-rows: 100%;
-         place-items: center;
-         border-bottom: 1px solid var(--white);
-      }
-      .mobile__li:last-child{
-         border-bottom: none;
-      }
-      .mobile__a{
-         color: var(--white);
-         grid-column: 1/3;
-         grid-row: 1;
-         font-size: 20px;
-      } 
-      .mobile__icon{
-         width: 40px;
-         height: 40px;
-         grid-column: 2;
-         grid-row: 1;
-         justify-self: start;
-      }
-      .visible{
-         opacity: 1;
-         visibility: visible; 
-      }
-   }
+    }
+    .tablet--hidden {
+      display: none;
+    }
+    .subnav__container {
+      padding: 0 30px;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+    }
+    .subnav__links {
+      display: flex;
+      width: max-content;
+      height: 100%;
+    }
+    .subnav__list {
+      height: 100%;
+      align-items: center;
+    }
+    .subnav__li {
+      height: 100%;
+    }
+    .subnav__link {
+      height: 40px;
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      color: var(--white);
+    }
+    .subnav__li:last-child {
+      border-left: 1px solid var(--white);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .desktop__links {
+      display: none;
+    }
+    .mobile__links {
+      display: grid;
+      grid-template-columns: 25% 50% 20%;
+      grid-template-rows: 100%;
+      place-items: center;
+      position: relative;
+    }
+    .mobile__image {
+      width: 100%;
+      max-width: 200px;
+      height: 100px;
+      object-fit: contain;
+    }
+    .mobile__menu {
+      justify-self: center;
+      width: 75%;
+      max-width: 80px;
+      object-fit: cover;
+    }
+    .subnav__container {
+      padding: 0 30px;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+    }
+    .mobile__submenu {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      background-color: var(--black);
+      z-index: 4;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      opacity: 0; /* Inicialmente oculto */
+      visibility: hidden; /* No ocupa espacio */
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 10% 90%;
+      padding: 0 10px;
+    }
+    .mobile__close {
+      width: 60px;
+      justify-self: end;
+      margin: 10px 10px 0 0;
+    }
+    .mobile__submenu__list {
+      display: grid;
+      grid-template-rows: repeat(auto-fit, minmax(max-content;, 1fr));
+      grid-row: 2;
+      grid-column: 1;
+      width: 100%;
+      height: 100%;
+      place-items: center;
+    }
+    .mobile__li {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 75% 25%;
+      grid-template-rows: 100%;
+      place-items: center;
+      border-bottom: 1px solid var(--white);
+    }
+    .mobile__li:last-child {
+      border-bottom: none;
+    }
+    .mobile__a {
+      color: var(--white);
+      grid-column: 1/3;
+      grid-row: 1;
+      font-size: 20px;
+    }
+    .mobile__icon {
+      width: 40px;
+      height: 40px;
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: start;
+    }
+    .visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 </style>
 
 <script>
-   const buttonMenu= document.querySelector(".mobile__menu");
-   const buttonClose= document.querySelector(".mobile__close");
+  const buttonMenu = document.querySelector(".mobile__menu");
+  const buttonClose = document.querySelector(".mobile__close");
 
-   const showMobile= () =>{
-      const mobileSubmenu= document.querySelector(".mobile__submenu");
-      mobileSubmenu?.classList.add("visible");
-   };
+  const showMobile = () => {
+    const mobileSubmenu = document.querySelector(".mobile__submenu");
+    mobileSubmenu?.classList.add("visible");
+  };
 
-   const hideMobile= () => {
-      const mobileSubmenu = document.querySelector(".mobile__submenu");
-      mobileSubmenu?.classList.remove("visible");
-   }
+  const hideMobile = () => {
+    const mobileSubmenu = document.querySelector(".mobile__submenu");
+    mobileSubmenu?.classList.remove("visible");
+  };
 
-   buttonMenu?.addEventListener("click", showMobile)
-   buttonClose?.addEventListener("click", hideMobile)
- 
-
+  buttonMenu?.addEventListener("click", showMobile);
+  buttonClose?.addEventListener("click", hideMobile);
 </script>

@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Band from "../components/Band.astro";
 
 const links = [
   {
@@ -41,9 +42,7 @@ const links = [
 ---
 
 <Layout title="Contacto">
-  <section class="band">
-    <h1 class="band__title">Contacto</h1>
-  </section>
+  <Band title="Contacto"/>
   <article class="contacto__container">
     <article class="contacto__text">
       <section class="contacto__head flex--col--nowrap">
@@ -197,10 +196,6 @@ const links = [
 
   /* MEDIA QUERIES */
   @media (max-width: 1200px) and (min-width: 700px) {
-    .band__title {
-      font-size: 45px;
-      text-align: center;
-    }
     .contacto__container {
       height: max-content;
       width: 100%;
@@ -236,10 +231,6 @@ const links = [
     }
   }
   @media (max-width: 700px) {
-    .band__title {
-      font-size: 45px;
-      text-align: center;
-    }
     .contacto__container {
       height: max-content;
       width: 100%;
@@ -274,7 +265,7 @@ const links = [
       height: 380px;
     }
     .contacto__links {
-    justify-content: center;
+      justify-content: center;
     }
   }
 </style>

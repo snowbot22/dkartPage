@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Band from "../components/Band.astro";
 
 const boadaLinks = [
   {
@@ -63,9 +64,7 @@ const porteroLinks = [
 ---
 
 <Layout title="Holding">
-  <article class="band">
-    <h1 class="band__title">Holding de Empresas</h1>
-  </article>
+  <Band title="Holding de Empresas" />
   <article class="holding__container flex--row--wrap">
     <section class="holding__card flex--row--wrap">
       <picture class="holding__pic">
@@ -131,25 +130,6 @@ const porteroLinks = [
 </Layout>
 
 <style>
-  .band {
-    width: 100%;
-    height: 270px;
-    display: grid;
-    place-items: center;
-    background-image: url("/images/main2.png");
-    background-size: cover;
-    background-position: top;
-    filter: grayscale(100%);
-  }
-  .band__title {
-    color: var(--white);
-    font-size: 60px;
-    background-color: rgba(31, 31, 31, 0.534);
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-  }
   .holding__container {
     gap: 80px;
     padding-top: 40px;
@@ -207,11 +187,6 @@ const porteroLinks = [
 
   /* MEDIA QUERIES */
   @media (max-width: 1200px) and (min-width: 700px) {
-    .band__title {
-      color: var(--white);
-      font-size: 45px;
-      text-align: center;
-    }
     .holding__card {
       gap: 20px;
       width: max-content;
@@ -239,11 +214,6 @@ const porteroLinks = [
     }
   }
   @media (max-width: 700px) {
-    .band__title {
-      color: var(--white);
-      font-size: 45px;
-      text-align: center;
-    }
     .holding__card {
       gap: 20px;
       width: max-content;
