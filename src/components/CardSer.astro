@@ -63,4 +63,21 @@ const { imgs,titles } = Astro.props;
         background-color: #672434;
         transition: all ease-in 0.3s;
     }
+    @media (max-width: 1200px) and (min-width: 700px) {
+        .cardSer{
+        width: 45%;
+        height: 350px;
+        }
+    }
+    @media (max-width: 700px) {
+        .cardSer{
+        width: 45%;
+        min-width: 300px;
+        height: max-content;
+        }
+        .cardSer__img{
+        height: 200px;
+        margin-bottom: 10px;
+    }
+    }
 </style>

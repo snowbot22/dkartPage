@@ -105,10 +105,12 @@ const imgs5 = [
       }
     </section>
   </article>
+  <!-- 
   <article class="products flex--col--nowrap">
     <h2 class="products__title">VENTA DE EQUIPOS</h2>
     <CardProd />
   </article>
+  -->
   <!-- 
   <article class="accs flex--col--nowrap">
     <h2 class="accs__title">ACCESORIOS</h2>
@@ -135,15 +137,6 @@ const imgs5 = [
       }
     </section>
   </article>
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/gn1splJcTDU?si=HCdMoUxH6__8i1Sj"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen></iframe>
 </Layout>
 
 <style>
@@ -281,16 +274,31 @@ const imgs5 = [
     .somos {
       width: 100%;
       height: max-content;
-      justify-content: space-around;
+      flex-flow: column nowrap;
       align-items: center;
+      justify-content: center;
+      padding: 30px 0;
+      gap: 20px;
     }
     .somos__text {
-      width: 42%;
+      width: 100%;
+      max-width: 950px;
       padding: 20px;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      text-align: center;
     }
     .somos__title {
       font-size: 30px;
       margin-bottom: 12px;
+      border-bottom: 2px solid #672434;
+      padding: 0 0 8px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
     }
     .somos__p1,
     .somos__p2 {
@@ -302,8 +310,109 @@ const imgs5 = [
       line-height: 1.6;
     }
     .somos__imgs {
-      width: 40%;
-      height: 70%;
+      width: 90%;
+      max-width: 700px;
+      height: 400px;
     }
+    .services {
+    padding: 20px;
+    flex-flow: row wrap;
+    margin-bottom: 20px;
+  } 
+  .services__container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+  }
+  .repr {
+    margin-top: 0px;
+    padding: 15px;
+  }
+  .rep__container {
+    justify-content: center;
+    align-items: center;
+    column-gap: 100px;
+    row-gap: 35px;
+    align-items: center;
+  }
+  .rep__img {
+    width: 90%;
+    max-width: 270px;
+    height: 100px;
+  }
+  }
+  @media (max-width: 700px){
+    .somos {
+      width: 100%;
+      height: max-content;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 0;
+      gap: 20px;
+    }
+    .somos__text {
+      width: 100%;
+      max-width: 950px;
+      padding: 20px;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      text-align: center;
+    }
+    .somos__title {
+      font-size: 30px;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #672434;
+      padding: 0 0 8px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+    }
+    .somos__imgs {
+      width: 90%;
+      height: 300px;
+    }
+    .services {
+    padding: 20px;
+    flex-flow: row wrap;
+    margin-bottom: 20px;
+  } 
+  .services__container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 25px;
+    row-gap: 30px;
+    width: 100%;
+  }
+  .services__title {
+    text-align: center;
+  }
+  .rep__title {
+    text-align: center;
+  }
+  .repr {
+    margin-top: 0px;
+    padding: 15px;
+  }
+  .rep__container {
+    justify-content: center;
+    align-items: center;
+    column-gap: 100px;
+    row-gap: 35px;
+    align-items: center;
+  }
+  .rep__img {
+    width: 90%;
+    max-width: 270px;
+    height: 100px;
+  }
   }
 </style>
