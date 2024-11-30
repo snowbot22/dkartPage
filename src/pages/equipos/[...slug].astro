@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+// 1. Genera una nueva ruta para cada entrada de colección
+export async function getStaticPaths() {
+    const entries = await getCollection('equipos');
+  return entries.map((entry) => ({
+    params: { slug: `equipos/${entry.slug}`}, // El slug incluye las subcarpetas automáticamente
+    props: { entry },
+  }));
+
+}
+// 2. Para tu plantilla, puedes obtener la entrada directamente de la prop
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+---
+
+<Layout title='Hi'>
+  <h1>{entry.data.titulo}</h1>
+</Layout>

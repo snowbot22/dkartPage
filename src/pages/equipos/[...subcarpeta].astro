@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Generar rutas dinámicas
+export async function getStaticPaths() {
+  const allEntries = await getCollection('equipos');
+
+  // Obtén una lista única de subcarpetas desde los slugs
+  const subcarpetas = Array.from(
+    new Set(allEntries.map((entry) => entry.slug.split('/')[0]))
+  );
+
+  return subcarpetas.map((subcarpeta) => ({
+    params: {subcarpeta: subcarpeta },
+  }));
+}
+
+// Obtener las entradas de la subcarpeta actual
+const { subcarpeta } = Astro.params;
+const allEntries = await getCollection('equipos');
+
+// Filtra las entradas pertenecientes a la subcarpeta actual
+const entries = allEntries.filter((entry) =>
+  entry.slug.startsWith(`${subcarpeta}/`)
+);
+---
+<Layout title='a'>
+  <h1>Equipos en {subcarpeta.replace('-', ' ')}</h1>
+  <ul>
+    {entries.map((entry) => (
+      <li>
+        <a href={`/equipos/${entry.slug}`}>{entry.data.titulo}</a>
+      </li>
+    ))}
+  </ul>
+</Layout>

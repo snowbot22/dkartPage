@@ -1,5 +1,5 @@
 // 1. Importa las utilidades de `astro:content`
-import { z,defineCollection } from 'astro:content';
+import { z,defineCollection  } from 'astro:content';
 import { string } from 'astro:schema';
 // 2. Define tu colección(es)
 const pageCollection = defineCollection({ 
@@ -8,7 +8,10 @@ const pageCollection = defineCollection({
     titulo: z.string(),
     image: z.string(),
     tag: z.string(),
-    desc: z.string()
+    desc: z.string(),
+    car: z.array(z.string()).optional(),
+    brand: z.string().optional(),
+    includes: z.string().optional(),
   }),
 
  });
@@ -17,5 +20,5 @@ const pageCollection = defineCollection({
 export const collections = {
   products: pageCollection,
   accesorios: pageCollection,
-  equipos: pageCollection
+  equipos: pageCollection,
 };

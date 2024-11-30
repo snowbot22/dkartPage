@@ -1,24 +1,28 @@
 ---
 import { getCollection } from "astro:content";
 
-export async function getSubfolders() {
-  const entries = await getCollection("accesorios"); // Reemplaza "blog" con el nombre de tu colección
+// OBTENIENDO DATOS DE EQUIPOS 
+  const equipos = await getCollection("equipos"); // Reemplaza "blog" con el nombre de tu colección
 
-  // Extraer subcarpetas únicas de los slugs
-  const subfolders = new Set();
-  entries.forEach((entry) => {
-    const parts = entry.slug.split("/"); // Divide el slug por "/"
-    if (parts.length > 1) {
-      subfolders.add(parts[0]); // Agrega el nombre de la subcarpeta al conjunto
-    }
+  const equiposTags = equipos.map((tag, index) => {
+    return tag.data.tag;
   });
 
-  return Array.from(subfolders); // Convierte el conjunto en un array
-}
+  const filteredEquipos = new Set(equiposTags);
 
-// Uso
-const subfolders = await getSubfolders();
-console.log(subfolders); // Imprime una lista de subcarpetas únicas
+  const filteredEquiposArr = [...filteredEquipos];
+
+  const equiposSlugs= equipos.map((e,i)=>{
+    return "/equipos/" + e.slug
+  })
+
+  let equiposCat= equiposSlugs.map(item => {
+  const parts = item.split('/'); 
+  return parts.slice(0, -1).join('/'); 
+  });
+  const equiposCatFiltered= new Set (equiposCat);
+  equiposCat= [...equiposCatFiltered]
+  console.log(equiposSlugs);
 
 const links = [
   {
@@ -28,28 +32,27 @@ const links = [
   },
   {
     name: "Equipos",
-    link: "/",
-    submenu: [
-      { name: "Drones", link: "#" },
-      { name: "Cámaras Multiespectrales", link: "#" },
-      { name: "GNSS Y GPS", link: "#" },
-      { name: "Estación Total", link: "#" },
-      { name: "Nivel de Topografía", link: "#" },
-    ],
+    link: "/equipos",
+    submenu: filteredEquiposArr.map((e,i)=>{
+        return {name: e, link: equiposCat[i]}
+      })
+    
   },
   {
     name: "Accesorios",
     link: "/",
     submenu: [
       { name: "Distanciometros Láser", link: "#" },
-      { name: "Trípodes", link: "#" },
-      { name: "Bastones y Bípodes", link: "#" },
-      { name: "Prismas - Miniprismas", link: "#" },
-      { name: "Miras Telestópicas", link: "#" },
-      { name: "Bases Nivelantes", link: "#" },
-      { name: "Baterías y Cargadores", link: "#" },
-      { name: "Otros", link: "#" },
-    ],
+      { name: "Geodésia", link: "#" },
+      { name: "Topografía", link: "#" },
+      { name: "Batimetría", link: "#" },
+      { name: "Fotogametría", link: "#" },
+      { name: "Diseño de Vías", link: "#" },
+      { name: "Cartografía", link: "#" },
+      { name: "Catastro", link: "#" },
+      { name: "Transporte", link: "#" },
+      { name: "Transferencia de Conocimientos", link: "#" },
+    ]
   },
   {
     name: "Consultorias",
@@ -89,6 +92,7 @@ const links = [
   },
 ];
 
+
 const links2 = [
   {
     name: "Servicio Técnico",
@@ -103,6 +107,7 @@ const links2 = [
 ];
 
 const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
+console.log(equiposSlugs);
 ---
 
 <header>
@@ -165,7 +170,7 @@ const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
               <ul class="desktop__submenu">
                 {item.submenu.map((subItem, subIndex) => (
                   <li class="submenu-item">
-                    <a href={subItem.link}>{subItem.name}</a>
+                    <a href={subItem.link }>{subItem.name}</a>
                   </li>
                 ))}
               </ul>
@@ -205,7 +210,7 @@ const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
                 <ul class="desktop__submenu">
                   {item.submenu.map((subItem, subIndex) => (
                     <li class="submenu-item">
-                      <a href={subItem.link}>{subItem.name}</a>
+                      <a href={subItem.link} class="desktop__submenu__link">{subItem.name}</a>
                     </li>
                   ))}
                 </ul>
@@ -290,10 +295,12 @@ const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
     height: 10px;
   }
   .desktop__submenu {
-    display: none;
+    display: block;
+    position: absolute;
+    background-color: #672434;
   }
   .desktop__li:hover .desktop__submenu {
-    display: none;
+    display: block;
   }
   .desktop__a:hover {
     border-bottom: 2px solid #672434;
