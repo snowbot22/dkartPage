@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
     const entries = await getCollection('equipos');
   return entries.map((entry) => ({
-    params: { slug: `equipos/${entry.slug}`}, // El slug incluye las subcarpetas automáticamente
+    params: { slug: entry.slug}, // El slug incluye las subcarpetas automáticamente
     props: { entry },
   }));
 
