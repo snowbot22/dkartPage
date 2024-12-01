@@ -1,9 +1,10 @@
 ---
 interface Props {
 	title: string;
+	theme: string
 }
 
-const { title } = Astro.props;
+const { title, theme } = Astro.props;
 import Header from '../components/Header.astro';
 import '@fontsource-variable/nunito-sans';
 
@@ -20,9 +21,11 @@ import '@fontsource-variable/nunito-sans';
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="flex--col--nowrap">
+	<body class="flex--col--nowrap bg--white">
 		<Header />
-		<slot />
+		<main class={theme == "black" ? `flex--col--nowrap bg--black` : "flex--col--nowrap bg--white"}>
+			<slot ></slot>/>
+		</main>
 		<a href="" class="wsp__link">
 			<img class="wsp__icon" src="/icons/wsp-icon.png" alt="Esrcibir a Whatsapp">
 		</a>
@@ -43,10 +46,19 @@ import '@fontsource-variable/nunito-sans';
 	body{
 		font-size: 17px;
 		color: var(--black);
-		background-color: var(--black);
 		font-family: 'Nunito Sans Variable', sans-serif;
 		background-color: var(--white);
 		align-items: center;
+	}
+	main{
+		width: 100%;
+		align-items: center;
+	}
+	.bg--black{
+		background-color: var(--black);
+	}
+	.bg--white{
+		background-color: var(--white);
 	}
 	a{
 		text-decoration: none;
