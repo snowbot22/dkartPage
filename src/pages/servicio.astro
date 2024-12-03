@@ -1,11 +1,42 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Band from "../components/Band.astro";
+import Slider from "../components/Slider.jsx";
+
+const imgs = ["/images/st1.jpg", "/images/st2.jpg", "/images/st3.jpg"];
+
+const servicios = [
+  {
+    name: "Diagnóstico",
+    icon: "/icons/diag-b.png",
+  },
+  {
+    name: "Ajuste y Calibración",
+    icon: "/icons/cal-b.png",
+  },
+  {
+    name: "Mantenimiento preventivo y correctivo",
+    icon: "/icons/mainte-b.png",
+  },
+  {
+    name: "Reparación",
+    icon: "/icons/repair-b.png",
+  },
+  {
+    name: "Informe y Certificado de Calibración",
+    icon: "/icons/verified-b.png",
+  },
+];
 ---
 
 <Layout title="Servicio Técnico" theme="black">
-  <article class="st__head">
+  <Band title="Servicio Técnico" img="/images/main2.png" />
+  <article class="st__head flex--row--wrap">
     <section class="st__text flex--col--nowrap">
-      <h1 class="st__title">Servicio Técnico</h1>
+      <h2 class="st__title">
+        Confía en nosotros para mantener tus equipos en perfecto estado y
+        garantizar su rendimiento óptimo.
+      </h2>
       <p class="st__p1">
         Mantenimiento, Calibración y Reparación de Equipos Topográficos y
         Geodésicos Multimarca Ofrecemos servicios especializados en el
@@ -14,65 +45,81 @@ import Layout from "../layouts/Layout.astro";
         personal altamente experimentado y capacitado, asegurando precisión y
         confiabilidad en cada servicio.
       </p>
-      <p class="st__p2">
-        Confía en nosotros para mantener tus equipos en perfecto estado y
-        garantizar su rendimiento óptimo.
-      </p>
       <a class="st__button" href=""> Contactanos </a>
     </section>
-    <picture class="st__picture">
-      <img src="/images/st1.jpg" alt="servicio-tecnico-hero" class="st__img" />
-    </picture>
-    <section class="att flex--row--wrap">
-        <section class="att__card flex--col--nowrap">
-            <img src="/icons/st2.png" alt="" class="att__icon">
-            <h2 class="att__title">
-                PERSONAL CAPACITADO
-            </h2>
-            <p class="att__p"> 
-                Expertos especializados garantizan el mantenimiento preciso de equipos topográficos y geodésicos.
-            </p>
-        </section>
-        <section class="att__card flex--col--nowrap">
-            <img src="/icons/st3.png" alt="" class="att__icon">
-            <h2 class="att__title">
-                LABORATORIO MULTIMARCA
-            </h2>
-            <p>
-                Equipos avanzados para reparar y calibrar instrumentos de todas las marcas.
-            </p>
-        </section>
-        <section class="att__card flex--col--nowrap">
-            <img src="/icons/st4.png" alt="" class="att__icon">
-            <h2 class="att__title">
-                GARANTÍA Y CALIDAD
-            </h2>
-            <p class="att__p">
-                Una década ofreciendo soluciones confiables y duraderas para tus instrumentos de precisión.
-            </p>
-        </section>
+    <section class="st__picture">
+      <Slider imgs={imgs} client:idle />
     </section>
   </article>
-  <article></article>
-  <article></article>
+  <article class="ser--wraper flex--row--nowrap ">
+    <article class="ser flex--col--nowrap">
+      <h2 class="ser__title">Nuestros Servicios</h2>
+      <section class="ser__container flex--row--wrap">
+        {
+          servicios.map((s, i) => {
+            return (
+              <div class="ser__card">
+                <div class="ser__picture">
+                  <img src={s.icon} alt={s.name + " icon"} class="ser__img" />
+                </div>
+                <h3 class="ser__subtitle">{s.name}</h3>
+              </div>
+            );
+          })
+        }
+        
+      </section>
+      <img src="/images/st2.jpg" alt="imagen servicio tecnico" class="ser__bottom">
+    </article>
+  </article>
+
+  <article class="why flex--row--nowrap" >
+    <section class="why__text flex--col--nowrap">
+      <h2 class="why__title">
+        Por que elegirnos
+      </h2>
+      <div class="why__container">
+        <div class="why__card">
+          <img src="/icons/personal-w.png" alt="icono personal capacitado" class="why__icon">
+          <h3 class="why__h3">
+            Personal capacitado
+          </h3>
+        </div>
+        <div class="why__card">
+          <img src="/icons/lab-w.png" alt="icono laboratorio multimarca" class="why__icon">
+          <h3 class="why__h3">
+            Laboratorio Multimarca
+          </h3>
+        </div>
+        <div class="why__card">
+          <img src="/icons/check-w.png" alt="icono garantia y calidad" class="why__icon">
+          <h3 class="why__h3">
+            Garantia y Calidad
+          </h3>
+        </div>
+      </div>
+    </section>
+    <div class="why__picture">
+      <img src="/images/st3.jpg" alt="foto servicio tecnico" class="why__img">
+    </div>
+  </article>
 </Layout>
 
 <style>
   .st__head {
-    display: grid;
     height: 600px;
-    grid-template-columns: 100%;
-    grid-template-rows: 100%;
     background-color: var(--black);
     max-width: 1500px;
     width: 100%;
-    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
   }
   .st__picture {
     grid-row: 1;
-    grid-column:1;
-    width: 100%;
-    height: 100%;
+    grid-column: 1;
+    width: 45%;
+    height: 500px;
     background-color: brown;
   }
   .st__img {
@@ -84,17 +131,15 @@ import Layout from "../layouts/Layout.astro";
     align-items: flex-start;
     justify-content: center;
     color: var(--white);
-    grid-row: 1;
-    grid-column: 1;
+    width: 55%;
     gap: 20px;
     padding: 50px;
-    z-index: 2;
-    background-color: #000000c2;
   }
   .st__title {
-    font-size: 40px;
+    font-size: 35px;
   }
-  .st__p1, .st__p2{
+  .st__p1,
+  .st__p2 {
     max-width: 800px;
   }
   .st__p2 {
@@ -111,86 +156,255 @@ import Layout from "../layouts/Layout.astro";
     font-weight: bold;
     border-radius: 12px;
   }
-  .att{
-    position: absolute;
-    z-index: 3;
-    width: 100%;
-    bottom: -180px;
-    justify-content: space-evenly;
-  }
-  .att__icon{
-    width: 60px;
-  }
-  .att__card{
-    width: 33.3%;
-    max-width: 380px;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 20px;
-    text-align: start;
+  .ser--wraper {
     background-color: var(--white);
-    border-radius: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .ser{
+    max-width: 1300px;
+    padding: 30px;
+    align-items: center;
+    gap: 30px;
+    height: max-content;
+  }
+  .ser__picture{
+    background-color: var(--white);
+    border: 1px solid #222;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    display: grid;
+    place-items: center;
+  }
+  .ser__img{
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+  }
+  .ser__title{
+    font-size: 40px;
+  }
+  .ser__container{
+    height: max-content;
+    gap: 30px;
+    max-width: 1200px;
+    align-items: center;
+    justify-content: center;
+  }
+  .ser__card{
+   width: 180px;
+   height: max-content;
+   min-height: 200px;
+   display: grid;
+   grid-template-columns: 100%;
+   grid-template-rows: 100px max-content;
+   place-items: center;
+   text-align: center;
+   opacity: 0.9;
+   transition: all ease 0.3s;
+  }
+  .ser__card:hover{
+    opacity: 1;
+  }
+  .ser__bottom{
+    width: 90%;
+    max-width: 700px;
+    height: 500px;
+  }
+  .why{
+    flex-flow: row-reverse nowrap;
+    max-width: 1500px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+  }
+  .why__picture{
+    width: 45%;
+    height: 500px;;
+  }
+  .why__img{
+    width: 100%;
+    height: 100%;
+  }
+  .why__text{
+    width: 55%;
+    height: 100%;
+    color: var(--white);
+    gap: 30px;
+  }
+  .why__icon{
+    width: 90px;
+    height: 90px;
+    border: 1.5px solid #fff;
+    border-radius: 100%;
+    padding: 10px;
+  }
+  .why__title{
+    font-size: 40px;
+    border-bottom: 1px solid var(--white);
+    padding-bottom: 10px;
+    max-width: 400px;
+  }
+  .why__container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+  }
+  .why__card{
+    width: 200px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   /* MEDIA QUERIES */
   @media (max-width: 1200px) and (min-width: 700px) {
     .st__head {
-      width: 100%;
-      grid-template-columns: 100%;
-      grid-template-rows: repeat(2, max-content);
+      flex-flow: column nowrap;
       height: max-content;
-      position: unset;
-      row-gap: 30px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 30px;
     }
     .st__picture {
-      grid-row: 1;
-      grid-column: 1;
       height: 450px;
+      width: 90%;
+      max-width: 800px;
     }
-    .st__p1, .st__p2{
-        max-width: 620px;
+    .st__p1 {
+      max-width: 680px;
+    }
+    .st__title {
+      max-width: 700px;
     }
     .st__text {
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      grid-row: 1;
-      grid-column: 1;
       gap: 22px;
       padding: 30px 40px;
-      z-index: 2;
-      background-color: #1d1d1dda;
       width: 100%;
-      height: 450px;
+      height: max-content;
     }
-    .att{
-      display: none;
+    .ser{
+    padding: 20px;
+    gap: 20px;
     }
-
+    .ser__container{
+    gap: 10px;
+    width: 90%;
+  }
+  .ser__card{
+    width: 300px;
+  }
+  .ser__bottom{
+    width: 90%;
+    max-width: 550px;
+    height: 450px;
+  }
+  .why{
+    flex-flow: column nowrap;
+    gap: 40px;
+    text-align: center;
+  }
+  .why__picture{
+    width: 90%;
+    height: 450px;
+    max-width: 600px;
+  }
+  .why__text{
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 800px;
+  }
+  .why__container{
+    gap: 40px;
+  }
   }
 
   @media (max-width: 700px) {
     .st__head {
-      grid-template-columns: 100%;
-      grid-template-rows: 100%;
+      flex-flow: column nowrap;
       height: max-content;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 30px;
     }
     .st__picture {
-      grid-row: 1;
-      grid-column: 1;
+      height: 350px;
+      width: 90%;
+      max-width: 600px;
     }
     .st__text {
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      grid-row: 1;
-      grid-column: 1;
-      gap: 20px;
-      padding: 30px 20px;
-      z-index: 2;
-      background-color: #1d1d1dda;
+      gap: 22px;
+      padding: 20px 15px;
+      width: 100%;
+      height: max-content;
     }
-    .att{
-      display: none;
+    .st__title {
+      font-size: 26px;
+      max-width: 550px;
     }
+    .ser{
+    padding: 20px;
+    gap: 20px;
+    text-align: center;
+    }
+    .ser__container{
+    gap: 40px;
+    width: 90%;
+  }
+  .ser__card{
+   min-height: 100px;
+  }
+  .ser__bottom{
+    width: 95%;
+    max-width: 370px;
+    height: 300px;
+    margin-top: 20px;
+  }
+  .why{
+    flex-flow: column nowrap;
+    gap: 40px;
+    text-align: center;
+  }
+  .why__picture{
+    width: 95%;
+    max-width: 370px;
+    height: 300px;
+    margin-top: 20px;
+  }
+  .why__text{
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 800px;
+  }
+  .why__container{
+    gap: 40px;
+  }
+  .why__card{
+    width: 90%;
+    width: 400px;
+    gap: 15px;
+  }
+  .why__icon{
+    width: 80px;
+    height: 80px;
+    border: 1.5px solid #fff;
+    border-radius: 100%;
+    padding: 15px;
+  }
   }
 </style>
