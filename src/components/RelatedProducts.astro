@@ -121,8 +121,8 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m√
     justify-content: center;
   }
   .related__button {
-    width: 80px;
-    height: 80px;
+    width:60px;
+    height: 60px;
     opacity: 0.9;
     cursor: pointer;
   }
@@ -143,10 +143,26 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m√
     .related {
     width: 100%;
   }
+  .related__button {
+    width: 50px;
+    height: 40px;
+  }
+  .related__title {
+    font-size: 28px;
+    text-align: center;
+  }
   }
   @media(max-width: 800px){
     .related {
     width: 100%;
+  }
+  .related__button {
+    width: 40px;
+    height: 40px;
+  }
+  .related__title {
+    font-size: 25px;
+    text-align: center;
   }
   }
 </style>
@@ -155,6 +171,7 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m√
   document.addEventListener("DOMContentLoaded", () => {
     const itemsToShow = 3;
     let currentScroll = 0;
+
 
     const container = document.querySelector(".related__container");
     const prevButton = document.querySelector(".related__button.prev");
