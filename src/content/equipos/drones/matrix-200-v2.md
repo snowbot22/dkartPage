@@ -1,6 +1,6 @@
 ---
-titulo: "MATRIX 200 V2"
-image: "https://i.pinimg.com/236x/6f/27/6b/6f276b3402623df9dbec87902ca916d7.jpg"
+titulo: "MATRICE 200 V2"
+image: "/images/m200v2.png"
 tag: "Drones"
 desc: " “Construido para soportar. Diseñado para adaptarse”.
 La plataforma definitiva para la productividad aérea combina un diseño robusto y una configuración simple para funcionar como una solución para una variedad de aplicaciones industriales. En el M200 V2 se mejoran los sistemas de control inteligente, el rendimiento de vuelo y se agregan características de seguridad de vuelo y datos."

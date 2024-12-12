@@ -14,6 +14,19 @@ const { Content } = await entry.render();
 
 ---
 
-<Layout title='Hi'>
-  <h1>{entry.data.titulo}</h1>
+<Layout title='Hi' theme='white'>
+  <article>
+    <h1>{entry.data.titulo}</h1>
+    <p>
+      {entry.data.desc}
+    </p>
+    <p>
+      A
+    </p>
+    <a href="/pdf/a22.pdf">
+      Descargar Catalogo
+    </a>
+  </article>
+  
+
 </Layout>

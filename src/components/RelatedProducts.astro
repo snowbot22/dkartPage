@@ -1,0 +1,205 @@
+---
+import { getCollection } from "astro:content";
+
+// Recibir la categoría como prop
+const { cat } = Astro.props;
+
+// Obtener todos los posts de la colección
+const general = await getCollection("equipos");
+
+// Filtrar los posts por la categoría recibida
+const filtradoGeneral = general.filter((eq) => eq.data.tag === cat);
+const slugsSplits = filtradoGeneral.map((f, i) => {
+  const partes = f.slug.split("/");
+  const primeraParte = partes[0];
+  return `${primeraParte}/`;
+});
+
+const itemsToShow = 3; // Número de elementos visibles en el carrusel
+const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay más elementos que los visibles
+---
+
+<article class="related">
+  <h2 class="related__title">Artículos Relacionados</h2>
+  <article class="related__wrapper">
+    {
+      hasOverflow && (
+        <img
+          src="/icons/a-white.png"
+          alt="Go Back Icon"
+          class="related__button prev"
+        />
+      )
+    }
+    <section class="related__container">
+      {
+        filtradoGeneral.map((post, index) => (
+          <div class="related__card">
+            <a href={"/equipos/" + post.slug} class="link__image">
+              <img
+                class="related__img"
+                src={post.data.image}
+                alt={"Ir a " + post.data.titulo}
+              />
+            </a>
+            <a href={"/equipos/" + post.slug} class="link__title">
+              <h3>{post.data.titulo}</h3>
+            </a>
+            <a class="link__cat" href={"/equipos/" + slugsSplits[index]}>
+              {post.data.tag}
+            </a>
+          </div>
+        ))
+      }
+    </section>
+    {
+      hasOverflow && (
+        <img
+          src="/icons/a-white.png"
+          alt="Go Next Button"
+          class="related__button next"
+        />
+      )
+    }
+  </article>
+</article>
+
+<style>
+  .related {
+    color: var(--white);
+    width: 90%;
+    max-width: 1300px;
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 40px;
+    gap: 15px;
+    border-top: 2px solid var(--white);
+    padding-top: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  .related__container {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 90%;
+    position: relative;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .related__container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .related__title {
+    font-size: 30px;
+  }
+  .related__img {
+    width: 270px;
+    height: 270px;
+    object-fit: contain;
+    background-color: white;
+  }
+  .related__card {
+    flex: 0 0 calc(100% / 3 - 10px); /* 3 elementos visibles */
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .related__wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    max-width: 1400px;
+    align-items: center;
+    justify-content: center;
+  }
+  .related__button {
+    width: 80px;
+    height: 80px;
+    opacity: 0.9;
+    cursor: pointer;
+  }
+  .next {
+    transform: rotate(180deg);
+  }
+  .link__image {
+    width: 270px;
+    height: 270px;
+  }
+  .link__title {
+    width: max-content;
+  }
+  .link__cat {
+    width: max-content;
+  }
+  @media (min-width: 800px) and (max-width: 1200px){
+    .related {
+    width: 100%;
+  }
+  }
+  @media(max-width: 800px){
+    .related {
+    width: 100%;
+  }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const itemsToShow = 3;
+    let currentScroll = 0;
+
+    const container = document.querySelector(".related__container");
+    const prevButton = document.querySelector(".related__button.prev");
+    const nextButton = document.querySelector(".related__button.next");
+
+    // Botones de Navegación
+    const handleScroll = (direction) => {
+      const itemWidth = container.offsetWidth / itemsToShow;
+
+      if (direction === "next") {
+        currentScroll += itemWidth;
+        if (currentScroll > container.scrollWidth - container.offsetWidth) {
+          currentScroll = container.scrollWidth - container.offsetWidth;
+        }
+      } else if (direction === "prev") {
+        currentScroll -= itemWidth;
+        if (currentScroll < 0) {
+          currentScroll = 0;
+        }
+      }
+
+      container.scrollLeft = currentScroll;
+    };
+
+    prevButton?.addEventListener("click", () => handleScroll("prev"));
+    nextButton?.addEventListener("click", () => handleScroll("next"));
+
+    // Soporte táctil
+    let startX = 0;
+    let scrollLeft = 0;
+
+    container.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener("touchmove", (e) => {
+      const x = e.touches[0].pageX - container.offsetLeft;
+      const walk = (startX - x) * 1.5;
+      const maxScrollLeft = container.scrollWidth - container.offsetWidth;
+
+      container.scrollLeft = Math.min(
+        Math.max(scrollLeft + walk, 0),
+        maxScrollLeft
+      );
+    });
+  });
+</script>

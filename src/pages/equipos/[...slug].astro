@@ -1,6 +1,9 @@
 ---
+import { getEntries } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import RelatedProducts from '../../components/RelatedProducts.astro';
+
 // 1. Genera una nueva ruta para cada entrada de colección
 export async function getStaticPaths() {
     const entries = await getCollection('equipos');
@@ -10,12 +13,210 @@ export async function getStaticPaths() {
   }));
 
 }
+
 // 2. Para tu plantilla, puedes obtener la entrada directamente de la prop
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-
 ---
 
-<Layout title='Hi'>
-  <h1>{entry.data.titulo}</h1>
+<Layout title={`Dkart | ${entry.data.titulo}`} theme='black'>
+  <section class="product__upper">
+    <button class="product__back">
+      <img src="/icons/back-w.png" alt="Go back" class="back__icon">
+      <p>
+        Regresar
+      </p>
+    </button>
+  </section>
+  <article class="product">
+    <img class="product__image" src={entry.data.image} alt="">
+    <section class="product__text">
+      <p> 
+        {entry.data.tag}
+      </p>
+      <h1 class="product__title">{entry.data.titulo}</h1>
+      <p>
+        Marca: {entry.data.brand}
+      </p>
+      <section class="product__buttons">
+        <a href={entry.data.pdf} class="product__button color--white">
+          Descargar Catalogo
+        </a>
+        <a href=`https://wa.me/593994954690?text=Hola!%20estoy%20interesado%20en%20el%20equipo%20${entry.data.titulo}` class="product__button color--green">
+          Consultar Disponibilidad
+        </a>
+      </section>
+    </section>
+  </article>
+  <article class="product__desc">
+    <h2 class="product__desc__title">
+      Descripción
+    </h2>
+    <section class="product__subtext">
+      <p>
+        {
+          entry.data.desc
+        }
+      </p>
+      {entry.data.includes && <p> {entry.data.includes} </p>}
+      {entry.data.car && <p> {entry.data.car} </p>}
+    </section>
+  </article>
+  <RelatedProducts cat={entry.data.tag}/>
+  
 </Layout>
+
+<style>
+  .product{
+    max-width: 1400px;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 20px;
+    width: 90%;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+  .product__image{
+    width: 570px;
+    background-color: white;
+    height: 450px;
+    object-fit: contain;
+  }
+  .product__text{
+    color: var(--white);
+    width: 45%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .product__title{
+    font-size: 40px;
+  }
+  .product__button{
+    padding: 10px;
+    border-radius: 12px;
+    margin-top: 25px;
+  }
+  .product__buttons{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+  }
+  .color--green{
+    background-color: rgb(41, 153, 46);
+  }
+  .color--white{
+    background-color: var(--white);
+    color: var(--black);
+  }
+  .product__desc{
+    color: var(--white);
+    width: 90%;
+    max-width: 1300px;
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 10px;
+    gap: 15px;
+    border-top: 2px solid var(--white);
+    padding-top: 10px;
+  }
+  .product__desc__title{
+    text-align: center;
+    font-size: 30px;
+  }
+  .product__subtext{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+  }
+  .product__back{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-flow:row nowrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 20px;
+  }
+  .back__icon{
+    width: 55px;
+  }
+  .product__upper{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    width: 90%;
+    max-width: 1350px;
+    padding: 25px 0;
+  }
+  @media  (min-width:800px) and (max-width: 1200px){
+    .product{
+    flex-flow: row wrap;
+    padding: 10px;
+    width: 100%;
+    gap: 30px;
+  }
+  .product__image{
+    width: 55%;
+    height: 420px;
+  }
+  .product__text{
+    color: var(--white);
+    width: 40%;
+  }
+  .product__title{
+    font-size: 35px;
+  }
+  .product__buttons{
+    flex-flow: row wrap;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  .product__button{
+    padding: 10px;
+    border-radius: 12px;
+    margin-top: 0px;
+    width: max-content;
+    min-width: 200px;
+    text-align: center;
+  }
+  }
+  @media (max-width: 800px){
+    .product{
+    flex-flow: column nowrap;
+    padding: 10px;
+    width: 100%;
+    gap: 30px;
+  }
+  .product__image{
+    width: 90%;
+    height: 420px;
+  }
+  .product__text{
+    color: var(--white);
+    width: 90%;
+  }
+  .product__title{
+    font-size: 30px;
+  }
+  }
+</style>
+
+<script>
+  const buttonBack= document.querySelector(".product__back");
+
+  const goBack = () =>{
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = '/'; 
+    }
+  }
+
+  buttonBack?.addEventListener("click", goBack)
+</script>

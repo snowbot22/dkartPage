@@ -9,6 +9,7 @@ const pageCollection = defineCollection({
     image: z.string(),
     tag: z.string(),
     desc: z.string(),
+    pdf: z.string().optional(),
     car: z.array(z.string()).optional(),
     brand: z.string().optional(),
     includes: z.string().optional(),

@@ -1,6 +1,7 @@
 ---
 titulo: "PHANTOM 4 PRO V 2.0"
-image: "https://i.pinimg.com/236x/6f/27/6b/6f276b3402623df9dbec87902ca916d7.jpg"
+image: "/images/phantom4.webp"
+pdf: "/pdf/phantom4.pdf"
 tag: "Drones"
 desc: "El Phantom 4 Pro V2.0 es una solución completa de imágenes aéreas, diseñada para el creador profesional. Con un sensor CMOS de 1 pulgada que puede grabar videos 4K / 60fps y fotos de 20MP, el  otorga a los cineastas una libertad creativa absoluta. El sistema de transmisión OcuSync 2.0 HD garantiza una conectividad y confiabilidad estables, cinco direcciones de detección de obstáculos garantizan seguridad adicional y un controlador remoto dedicado con una pantalla incorporada garantiza una precisión y control aún mayores.  Una amplia gama de características inteligentes hace que volar sea mucho más fácil."
 brand: "DJI"

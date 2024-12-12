@@ -16,14 +16,14 @@ const subcarpetas = Array.from(
 
 ---
 
-<Layout title="Equipos">
+<Layout title="Equipos" theme="black">
     <section>
         <h2>
             Categorias de nuestros productos
         </h2>
         {
             filterTag.map((cat,index)=>{
-                return <a href={"equipos/" + subcarpetas[index]}>
+                return <a href={"/equipos/" + subcarpetas[index]}>
                     {cat}
                 </a>
             })
