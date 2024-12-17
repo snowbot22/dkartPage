@@ -19,10 +19,10 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={`Dkart | ${entry.data.titulo}`} theme='black'>
+<Layout title={`Dkart | ${entry.data.titulo}`} theme='white'>
   <section class="product__upper">
     <button class="product__back">
-      <img src="/icons/back-w.png" alt="Go back" class="back__icon">
+      <img src="/icons/b-b.png" alt="Go back" class="back__icon">
       <p>
         Regresar
       </p>
@@ -39,7 +39,7 @@ const { Content } = await entry.render();
         Marca: {entry.data.brand}
       </p>
       <section class="product__buttons">
-        <a href={entry.data.pdf} class="product__button color--white">
+        <a href={entry.data.pdf} class="product__button color--black">
           Descargar Catalogo
         </a>
         <a href=`https://wa.me/593994954690?text=Hola!%20estoy%20interesado%20en%20el%20equipo%20${entry.data.titulo}` class="product__button color--green">
@@ -84,7 +84,6 @@ const { Content } = await entry.render();
     object-fit: contain;
   }
   .product__text{
-    color: var(--white);
     width: 45%;
     display: flex;
     flex-flow: column nowrap;
@@ -106,20 +105,24 @@ const { Content } = await entry.render();
   }
   .color--green{
     background-color: rgb(41, 153, 46);
+    color: var(--white);
   }
   .color--white{
     background-color: var(--white);
     color: var(--black);
   }
-  .product__desc{
+  .color--black{
+    background-color: var(--black);
     color: var(--white);
+  }
+  .product__desc{
     width: 90%;
     max-width: 1300px;
     display: flex;
     flex-flow: column nowrap;
     margin-top: 10px;
     gap: 15px;
-    border-top: 2px solid var(--white);
+    border-top: 2px solid var(--black);
     padding-top: 10px;
   }
   .product__desc__title{
@@ -140,7 +143,7 @@ const { Content } = await entry.render();
     gap: 15px;
     align-items: center;
     justify-content: center;
-    color: var(--white);
+    color: var(--black);
     font-size: 20px;
   }
   .back__icon{
@@ -166,7 +169,7 @@ const { Content } = await entry.render();
     height: 420px;
   }
   .product__text{
-    color: var(--white);
+    color: var(--black);
     width: 40%;
   }
   .product__title{
@@ -198,7 +201,7 @@ const { Content } = await entry.render();
     height: 420px;
   }
   .product__text{
-    color: var(--white);
+    color: var(--black);
     width: 90%;
   }
   .product__title{

@@ -25,7 +25,7 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m�
     {
       hasOverflow && (
         <img
-          src="/icons/a-white.png"
+          src="/icons/a-black.png"
           alt="Go Back Icon"
           class="related__button prev"
         />
@@ -55,7 +55,7 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m�
     {
       hasOverflow && (
         <img
-          src="/icons/a-white.png"
+          src="/icons/a-black.png"
           alt="Go Next Button"
           class="related__button next"
         />
@@ -66,23 +66,22 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m�
 
 <style>
   .related {
-    color: var(--white);
     width: 90%;
     max-width: 1300px;
     display: flex;
     flex-flow: column nowrap;
     margin-top: 40px;
     gap: 15px;
-    border-top: 2px solid var(--white);
-    padding-top: 10px;
+    padding: 15px 0;
     align-items: center;
     justify-content: center;
+    border-top: 2px solid var(--black);
   }
   .related__container {
     display: flex;
     flex-flow: row nowrap;
     gap: 30px;
-    overflow-x: auto;
+    overflow: hidden;
     scroll-behavior: smooth;
     width: 90%;
     position: relative;
@@ -126,7 +125,7 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m�
     opacity: 0.9;
     cursor: pointer;
   }
-  .next {
+  .prev {
     transform: rotate(180deg);
   }
   .link__image {
@@ -151,6 +150,25 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m�
     font-size: 28px;
     text-align: center;
   }
+  .related__card {
+    flex: 0 0 calc(100% / 3 - 20px); /* Redimensiona para 3 elementos visibles */
+    width: calc(100% / 3 - 20px); /* Ajusta el ancho */
+    max-width: calc(100% / 3 - 20px);
+    box-sizing: border-box;
+  }
+  .related__img{
+    width: 100%;
+    height: auto;
+  }
+  .link__image{
+    width: 100%;
+    height: 200px;
+  }
+
+  .related__img {
+    width: 100%; /* Ajustar la imagen al nuevo tamaño */
+    height: 200px; /* Mantener la relación de aspecto */
+  }
   }
   @media(max-width: 800px){
     .related {
@@ -164,40 +182,85 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m�
     font-size: 25px;
     text-align: center;
   }
+  .related__container {
+    width: 100%;
+  }
+
+  .related__card {
+    flex: 0 0 calc(100% / 2 - 15px); /* Ajustar para 2 elementos visibles */
+    width: calc(100% / 2 - 15px); /* Asegurar que ocupen la mitad del ancho */
+    max-width: calc(100% / 2 - 15px);
+    box-sizing: border-box;
+  }
+
+  .related__img {
+    width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+    height: 180px; /* Mantener la relación de aspecto */
+  }
+  .link__image{
+    width: 100%;
+    height: 270px;
+  }
   }
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const itemsToShow = 3;
-    let currentScroll = 0;
+   let itemsToShow = 3; // Número predeterminado de elementos visibles
+  const container = document.querySelector(".related__container");
+  const prevButton = document.querySelector(".related__button.prev");
+  const nextButton = document.querySelector(".related__button.next");
 
+  let currentScroll = 0;
 
-    const container = document.querySelector(".related__container");
-    const prevButton = document.querySelector(".related__button.prev");
-    const nextButton = document.querySelector(".related__button.next");
+  // Función para calcular el número de elementos visibles dinámicamente
+  const calculateItemsToShow = () => {
+    if (window.innerWidth <= 800) {
+      return 2; // 2 elementos para pantallas menores a 800px
+    }
+    if (window.innerWidth <= 1200) {
+      return 3; // 3 elementos para pantallas entre 800px y 1200px
+    }
+    return 3; // Por defecto, 3 elementos visibles
+  };
 
-    // Botones de Navegación
-    const handleScroll = (direction) => {
-      const itemWidth = container.offsetWidth / itemsToShow;
+  // Función para calcular el ancho de cada ítem
+  const calculateItemWidth = () => {
+    itemsToShow = calculateItemsToShow();
+    return container.offsetWidth / itemsToShow;
+  };
 
-      if (direction === "next") {
-        currentScroll += itemWidth;
-        if (currentScroll > container.scrollWidth - container.offsetWidth) {
-          currentScroll = container.scrollWidth - container.offsetWidth;
-        }
-      } else if (direction === "prev") {
-        currentScroll -= itemWidth;
-        if (currentScroll < 0) {
-          currentScroll = 0;
-        }
-      }
+  // Función para manejar el desplazamiento
+  const handleScroll = (direction) => {
+    const itemWidth = calculateItemWidth();
+    const maxScroll = container.scrollWidth - container.offsetWidth;
 
-      container.scrollLeft = currentScroll;
-    };
+    // Desplazar de 3 elementos a la vez (o 2 dependiendo del tamaño de pantalla)
+    const scrollAmount = itemWidth * itemsToShow;
 
-    prevButton?.addEventListener("click", () => handleScroll("prev"));
-    nextButton?.addEventListener("click", () => handleScroll("next"));
+    if (direction === "next") {
+      currentScroll = Math.min(currentScroll + scrollAmount, maxScroll);
+    } else if (direction === "prev") {
+      currentScroll = Math.max(currentScroll - scrollAmount, 0);
+    }
+
+    container.scrollTo({
+      left: currentScroll,
+      behavior: "smooth",
+    });
+  };
+
+  // Eventos de los botones
+  prevButton?.addEventListener("click", () => handleScroll("prev"));
+  nextButton?.addEventListener("click", () => handleScroll("next"));
+
+  // Ajustar currentScroll y recalcular el desplazamiento al cambiar el tamaño de la ventana
+  window.addEventListener("resize", () => {
+    // Recalcular el ancho de los elementos y asegurarse de que currentScroll se mantenga dentro del rango válido
+    const itemWidth = calculateItemWidth();
+    const maxScroll = container.scrollWidth - container.offsetWidth;
+    currentScroll = Math.min(currentScroll, maxScroll);
+    container.scrollTo({ left: currentScroll });
+  });
 
     // Soporte táctil
     let startX = 0;
@@ -218,5 +281,5 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m�
         maxScrollLeft
       );
     });
-  });
+
 </script>
