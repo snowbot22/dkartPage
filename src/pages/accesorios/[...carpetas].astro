@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 
 // Generar rutas dinámicas
 export async function getStaticPaths() {
-  const allEntries = await getCollection('equipos');
+  const allEntries = await getCollection('accesorios');
 
   // Obtén una lista única de subcarpetas desde los slugs
   const subcarpetas = Array.from(
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 
 // Obtener las entradas de la subcarpeta actual
 const { subcarpeta } = Astro.params;
-const allEntries = await getCollection('equipos');
+const allEntries = await getCollection('accesorios');
 
 // Filtra las entradas pertenecientes a la subcarpeta actual
 const entries = allEntries.filter((entry) =>
@@ -30,7 +30,7 @@ const entries = allEntries.filter((entry) =>
   <ul>
     {entries.map((entry) => (
       <li>
-        <a href={`/equipos/${entry.slug}`}>{entry.data.titulo}</a>
+        <a href={`/accesorios/${entry.slug}`}>{entry.data.titulo}</a>
       </li>
     ))}
   </ul>

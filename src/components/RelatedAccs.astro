@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 const { cat } = Astro.props;
 
 // Obtener todos los posts de la colección
-const general = await getCollection("equipos");
+const general = await getCollection("accesorios");
 
 // Filtrar los posts por la categoría recibida
 const filtradoGeneral = general.filter((eq) => eq.data.tag === cat);
@@ -205,35 +205,36 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m�
 </style>
 
 <script>
-   let itemsToShow = 3; 
+   let itemsToShow = 3; // Número predeterminado de elementos visibles
   const container = document.querySelector(".related__container");
   const prevButton = document.querySelector(".related__button.prev");
   const nextButton = document.querySelector(".related__button.next");
 
   let currentScroll = 0;
 
+  // Función para calcular el número de elementos visibles dinámicamente
   const calculateItemsToShow = () => {
     if (window.innerWidth <= 800) {
-      return 2; 
+      return 2; // 2 elementos para pantallas menores a 800px
     }
     if (window.innerWidth <= 1200) {
-      return 3; 
+      return 3; // 3 elementos para pantallas entre 800px y 1200px
     }
-    return 3; 
+    return 3; // Por defecto, 3 elementos visibles
   };
 
-  
+  // Función para calcular el ancho de cada ítem
   const calculateItemWidth = () => {
     itemsToShow = calculateItemsToShow();
     return container.offsetWidth / itemsToShow;
   };
 
- 
+  // Función para manejar el desplazamiento
   const handleScroll = (direction) => {
     const itemWidth = calculateItemWidth();
     const maxScroll = container.scrollWidth - container.offsetWidth;
 
-    
+    // Desplazar de 3 elementos a la vez (o 2 dependiendo del tamaño de pantalla)
     const scrollAmount = itemWidth * itemsToShow;
 
     if (direction === "next") {
@@ -248,17 +249,20 @@ const hasOverflow = filtradoGeneral.length > itemsToShow; // Verificar si hay m�
     });
   };
 
+  // Eventos de los botones
   prevButton?.addEventListener("click", () => handleScroll("prev"));
   nextButton?.addEventListener("click", () => handleScroll("next"));
 
+  // Ajustar currentScroll y recalcular el desplazamiento al cambiar el tamaño de la ventana
   window.addEventListener("resize", () => {
+    // Recalcular el ancho de los elementos y asegurarse de que currentScroll se mantenga dentro del rango válido
     const itemWidth = calculateItemWidth();
     const maxScroll = container.scrollWidth - container.offsetWidth;
     currentScroll = Math.min(currentScroll, maxScroll);
     container.scrollTo({ left: currentScroll });
   });
 
-   
+    // Soporte táctil
     let startX = 0;
     let scrollLeft = 0;
 

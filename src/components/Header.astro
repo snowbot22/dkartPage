@@ -3,26 +3,44 @@ import { getCollection } from "astro:content";
 
 // OBTENIENDO DATOS DE EQUIPOS 
   const equipos = await getCollection("equipos"); // Reemplaza "blog" con el nombre de tu colección
+  const accesorios= await getCollection("accesorios")
 
   const equiposTags = equipos.map((tag, index) => {
     return tag.data.tag;
   });
 
+  const accsTags= accesorios.map((tag,index)=>{
+    return tag.data.tag;
+  })
+
   const filteredEquipos = new Set(equiposTags);
+  const filteredAccs= new Set(accsTags);
 
   const filteredEquiposArr = [...filteredEquipos];
+  const filteredAccsArr= [...filteredAccs];
 
   const equiposSlugs= equipos.map((e,i)=>{
     return "/equipos/" + e.slug
+  })
+  const accsSlugs= accesorios.map((s,i)=>{
+    return "/accesorios/" + s.slug;
   })
 
   let equiposCat= equiposSlugs.map(item => {
   const parts = item.split('/'); 
   return parts.slice(0, -1).join('/'); 
   });
+  let accsCat= accsSlugs.map((item=>{
+    const parts= item.split("/");
+    return parts.slice(0, -1).join("/");
+  }))
+
   const equiposCatFiltered= new Set (equiposCat);
+  const accsCatFiltered= new Set(accsCat);
+
   equiposCat= [...equiposCatFiltered]
-  console.log(equiposSlugs);
+  accsCat=[...accsCatFiltered]
+  console.log(accsCat);
 
 const links = [
   {
@@ -40,19 +58,10 @@ const links = [
   },
   {
     name: "Accesorios",
-    link: "/",
-    submenu: [
-      { name: "Distanciometros Láser", link: "#" },
-      { name: "Geodésia", link: "#" },
-      { name: "Topografía", link: "#" },
-      { name: "Batimetría", link: "#" },
-      { name: "Fotogametría", link: "#" },
-      { name: "Diseño de Vías", link: "#" },
-      { name: "Cartografía", link: "#" },
-      { name: "Catastro", link: "#" },
-      { name: "Transporte", link: "#" },
-      { name: "Transferencia de Conocimientos", link: "#" },
-    ]
+    link: "/accesorios",
+    submenu: filteredAccsArr.map((e,i)=>{
+      return {name: e, link: accsCat[i]}
+    })
   },
   {
     name: "Consultorias",

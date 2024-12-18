@@ -1,0 +1,40 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, getEntry } from 'astro:content'
+
+
+const allBlogPosts = await getCollection('accesorios');
+const allTags= allBlogPosts.map((tag, index)=>{
+    return tag.data.tag;
+})
+const filterTag= allTags.filter((tag, index, self) => {
+  return self.indexOf(tag) === index;});
+
+const subcarpetas = Array.from(
+    new Set(allBlogPosts.map((entry) => entry.slug.split('/')[0]))
+  );
+
+---
+
+<Layout title="Equipos" theme="white">
+    <section>
+        <h2>
+            Categorias de nuestros accesorios
+        </h2>
+        {
+            filterTag.map((cat,index)=>{
+                return <a href={"/accesorios/cat/" + subcarpetas[index]}>
+                    {cat}
+                </a>
+            })
+        }
+    </section>
+    <section>
+        <h2>Todos nuestros accesorios</h2>
+        {allBlogPosts.map((tag,index)=>{
+            return <a href={"/accesorios/" + tag.slug}>
+                {tag.data.titulo}
+            </a>
+        })}
+    </section>
+</Layout>
