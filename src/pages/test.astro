@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import PaginationSlider from "../components/PaginationSlider";
+import CardProd from "../components/CardProd.astro";
+import React from "react";
+
+
+const items = await getCollection("equipos");
+---
+
+<Layout title="teSTPage" theme="white">
+    <PaginationSlider items={items} client:idle sect="/equipos/" />
+</Layout>

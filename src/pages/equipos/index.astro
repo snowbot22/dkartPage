@@ -1,40 +1,87 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getCollection, getEntry } from 'astro:content'
+import { getCollection, getEntry } from "astro:content";
+import CardAcc from "../../components/CardAcc.astro";
+import Band from "../../components/Band.astro";
+import PaginationSlider from "../../components/PaginationSlider";
 
-
-const allBlogPosts = await getCollection('equipos');
-const allTags= allBlogPosts.map((tag, index)=>{
-    return tag.data.tag;
-})
-const filterTag= allTags.filter((tag, index, self) => {
-  return self.indexOf(tag) === index;});
+const allBlogPosts = await getCollection("equipos");
+const allTags = allBlogPosts.map((tag, index) => {
+  return tag.data.tag;
+});
+const filterTag = allTags.filter((tag, index, self) => {
+  return self.indexOf(tag) === index;
+});
 
 const subcarpetas = Array.from(
-    new Set(allBlogPosts.map((entry) => entry.slug.split('/')[0]))
-  );
+  new Set(allBlogPosts.map((entry) => entry.slug.split("/")[0]))
+);
+
+const imgs = ["/images/a1.png", "/images/phantom4.webp"];
 
 ---
 
-<Layout title="Equipos" theme="black">
-    <section>
-        <h2>
-            Categorias de nuestros productos
-        </h2>
-        {
-            filterTag.map((cat,index)=>{
-                return <a href={"/equipos/" + subcarpetas[index]}>
-                    {cat}
-                </a>
-            })
-        }
-    </section>
-    <section>
-        <h2>Todos nuestros productos</h2>
-        {allBlogPosts.map((tag,index)=>{
-            return <a href={"equipos/" + tag.slug}>
-                {tag.data.titulo}
-            </a>
-        })}
-    </section>
+<Layout title="Equipos" theme="white">
+  <Band title="Equipos" />
+  <section class="cats">
+    {
+      filterTag.map((cat, index) => {
+        return (
+          <CardAcc
+            titles={cat}
+            links={"/equipos/" + subcarpetas[index]}
+            imgs={imgs[index]}
+          />
+        );
+      })
+    }
+  </section>
+  <section class="prod">
+    <div class="prod__text">
+      <h1 class="prod__title">Venta de Equipos Topográficos en Quito</h1>
+      <p>
+        Explora nuestro catálogo de drones y equipos topográficos diseñados para
+        profesionales. Desde levantamientos de terreno hasta monitoreo aéreo,
+        nuestra tecnología de punta garantiza precisión y eficiencia en cada
+        proyecto.
+      </p>
+    </div>
+    <PaginationSlider items={allBlogPosts} sect="/equipos/" client:only="react"/>
+   
+  </section>
 </Layout>
+
+<style>
+  .cats {
+    width: 100%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row: 1fr 1fr;
+    row-gap: 40px;
+    margin-top: 40px;
+    place-items: center;
+  }
+  .prod{
+    margin-top: 40px;
+    width: 90%;
+    max-width: 1400px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 30px;
+    text-align: center;
+  }
+  .prod__title{
+    border-top: 2px solid var(--black);
+    padding-top: 20px;
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  .prod__container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    background-color: brown;
+  }
+</style>
