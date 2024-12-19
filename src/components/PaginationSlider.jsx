@@ -1,8 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/slider-pag.css";
 
-const PaginationSlider = ({ items, sect, itemsPerPage= 12 }) => {
+const PaginationSlider = ({ items, sect }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(12);
+
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      const width = window.innerWidth;
+      if (width < 800) {
+        setItemsPerPage(4);
+      } else if (width < 1200) {
+        setItemsPerPage(6);
+      } else {
+        setItemsPerPage(12);
+      }
+    };
+
+    updateItemsPerPage(); // Configuración inicial
+    window.addEventListener("resize", updateItemsPerPage);
+
+    return () => window.removeEventListener("resize", updateItemsPerPage);
+  }, []);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const start = (currentPage - 1) * itemsPerPage;

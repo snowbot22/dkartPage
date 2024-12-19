@@ -17,7 +17,7 @@ const subcarpetas = Array.from(
   new Set(allBlogPosts.map((entry) => entry.slug.split("/")[0]))
 );
 
-const imgs = ["/images/a1.png", "/images/phantom4.webp"];
+const imgs = ["/images/e2-2.jpg", "/images/phantom4.webp", "/images/e3-1.png", "/images/e4.jpg", "/images/e5-1.webp"];
 
 ---
 
@@ -28,7 +28,7 @@ const imgs = ["/images/a1.png", "/images/phantom4.webp"];
       filterTag.map((cat, index) => {
         return (
           <CardAcc
-            titles={cat}
+            titles={cat.toUpperCase()}
             links={"/equipos/" + subcarpetas[index]}
             imgs={imgs[index]}
           />
@@ -63,25 +63,38 @@ const imgs = ["/images/a1.png", "/images/phantom4.webp"];
     place-items: center;
   }
   .prod{
-    margin-top: 40px;
+    margin-top: 70px;
     width: 90%;
     max-width: 1400px;
     display: flex;
     flex-flow: column nowrap;
-    gap: 30px;
+    gap: 50px;
     text-align: center;
   }
   .prod__title{
     border-top: 2px solid var(--black);
-    padding-top: 20px;
+    padding-top: 40px;
     font-size: 40px;
     margin-bottom: 10px;
   }
-  .prod__container{
+  @media (max-width: 1200px) and (min-width: 800px){
+    .cats {
+    width: 90%;
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 40px;
+    place-items: center;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  }
+  @media (max-width:800px){
+    .cats {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    background-color: brown;
+    grid-template-columns: 50% 50%;
+    margin-top: 40px;
+    place-items: center;
+  }
   }
 </style>
