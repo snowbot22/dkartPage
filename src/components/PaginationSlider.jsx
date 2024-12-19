@@ -1,31 +1,8 @@
 import React, { useState } from "react";
 import "../styles/slider-pag.css";
 
-const PaginationSlider = ({ items, sect }) => {
-
-   const getItemsPerPage = (width) => {
-    if (width > 1200) return 8; // Desktop
-    if (width > 768) return 4;  // Tablet
-    return 2;                   // Mobile
-  };
-
+const PaginationSlider = ({ items, sect, itemsPerPage= 12 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(getItemsPerPage(window.innerWidth));
-
-  // Función para calcular itemsPerPage basado en el ancho de la ventana
- 
-
-  // Listener para window.resize
-  useEffect(() => {
-    const handleResize = () => {
-      setItemsPerPage(getItemsPerPage(window.innerWidth));
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const start = (currentPage - 1) * itemsPerPage;
