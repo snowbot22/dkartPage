@@ -1,6 +1,7 @@
 ---
 titulo: "RedEdge-MX"
-image: "https://i.pinimg.com/236x/6f/27/6b/6f276b3402623df9dbec87902ca916d7.jpg"
+image: "/images/redEdgeMx.png"
+pdf: "/pdf/MX.pdf"
 tag: "Camaras Multiespectrales"
 desc: "Sensor multiespectral profesional"
 brand: "MicaSense"

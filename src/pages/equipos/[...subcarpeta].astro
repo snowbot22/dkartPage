@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import PaginationSlider from "../../components/PaginationSlider";
+import Band from '../../components/Band.astro';
 
 // Generar rutas dinámicas
 export async function getStaticPaths() {
@@ -24,16 +26,17 @@ const allEntries = await getCollection('equipos');
 const entries = allEntries.filter((entry) =>
   entry.slug.startsWith(`${subcarpeta}/`)
 );
+
+function capitalizeFirstLetter(string) {
+  if (!string) return ''; // Maneja cadenas vacías o nulas
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+let capitalizeTitle= capitalizeFirstLetter(subcarpeta.replace('-', ' '))
 ---
-<Layout title='a' theme='white'>
-  <h1>Equipos en {subcarpeta.replace('-', ' ')}</h1>
-  <ul>
-    {entries.map((entry) => (
-      <li>
-        <a href={`/equipos/${entry.slug}`}>{entry.data.titulo}</a>
-      </li>
-    ))}
-  </ul>
+<Layout title={"Dkart | " + capitalizeTitle} theme='white'>
+  <Band title={capitalizeTitle}/>
+  <PaginationSlider items={entries} sect={"/equipos/"}/>
 </Layout>
 
 <style>

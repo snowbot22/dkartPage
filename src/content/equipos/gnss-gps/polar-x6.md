@@ -1,6 +1,7 @@
 ---
 titulo: "POLAR X6"
-image: "https://i.pinimg.com/236x/6f/27/6b/6f276b3402623df9dbec87902ca916d7.jpg"
+image: "/images/polarx6.png"
+pdf: "/pdf/polarx6.pdf"
 tag: "GNSS Y GPS"
 desc: "El equipo X6 polar (antena GPS + colector GPS), es un equipo de precisión que se utiliza para realizar trabajos de topografía y geodesia, como colocar puntos de control GPS a partir de la red de primer orden del Instituto Geográfico Militar, realizar levantamientos topográficos a partir del modo RTK (real time kinematic), realizar levantamientos catastrales entre otros trabajos de precisión.
 El receptor GPS portátil de mano Polar X6 tiene tecnología inalámbrica Bluetooth incorporada para la conexión sin cables a otros dispositivos, conectividad WIFI para conexiones a redes. Además, el módulo de comunicación GPRS / GSM móvil 3G permite una conectividad gratuita a internet para la descarga y transmisión de datos. El receptor GPS de mano Polar X6 seguramente le ofrecerá una experiencia laboral agradable."

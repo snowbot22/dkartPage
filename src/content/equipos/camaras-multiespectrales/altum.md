@@ -1,6 +1,7 @@
 ---
 titulo: "ALTUM"
-image: "https://i.pinimg.com/236x/6f/27/6b/6f276b3402623df9dbec87902ca916d7.jpg"
+image: "/images/altum.jpg"
+pdf: "/pdf/altum.pdf"
 tag: "Camaras Multiespectrales"
 desc: "Altum integra una cámara térmica con una multiespectral de cinco bandas, produciendo imágenes RGB de alta resolución, térmicas y multiespectrales en un solo vuelo."
 brand: "MicaSense"

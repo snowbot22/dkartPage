@@ -1,6 +1,7 @@
 ---
 titulo: "H3 PLUS"
-image: "https://i.pinimg.com/236x/6f/27/6b/6f276b3402623df9dbec87902ca916d7.jpg"
+image: "/images/h3-plus.jpg"
+pdf: "/pdf/h3-plus.pdf"
 tag: "GNSS Y GPS"
 desc: "El equipo H3 plus es un controlador profesional de última generación que se ejecuta en sistema Android y ofrece capacidades de los teléfonos inteligentes de última generación que, combinadas con una calidad profesional sólida y con un teclado alfanumérico, proporciona flexibilidad para el trabajo de campo de los topógrafos.
 Controlador ligero y resistente de las antenas GNSS con una cubierta resistente de aleación de magnesio que llega hasta IP68 (impermeable y a prueba de caída de 1,5 m), sirve para almacenar la información así como para realizar diferentes trabajos de topografía y geodesia utilizando las aplicaciones del equipo.

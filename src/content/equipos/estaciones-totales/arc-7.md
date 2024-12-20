@@ -1,6 +1,7 @@
 ---
 titulo: "Arc 7"
-image: "https://i.pinimg.com/236x/6f/27/6b/6f276b3402623df9dbec87902ca916d7.jpg"
+image: "/images/arc7.jpg"
+pdf: "/pdf/arc7.pdf"
 tag: "Estaciones Totales"
 desc: "ARC 7, estación total para la medición de ángulos y distancias está impulsada por un sofisticado software incorporado, proporciona varias aplicaciones esenciales en el trabajo de topografía que le permite manipular el equipo de manera efectiva, como configurar la compensación de inclinación de la estación total, COGO, visualización de datos, calibración de transferencia, etc. Posee un sensor de presión y temperatura que permite corregir los errores atmosféricos.
 

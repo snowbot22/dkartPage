@@ -9,7 +9,7 @@ const PaginationSlider = ({ items, sect }) => {
     const updateItemsPerPage = () => {
       const width = window.innerWidth;
       if (width < 800) {
-        setItemsPerPage(4);
+        setItemsPerPage(6);
       } else if (width < 1200) {
         setItemsPerPage(6);
       } else {
