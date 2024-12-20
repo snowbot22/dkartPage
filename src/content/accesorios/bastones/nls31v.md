@@ -1,8 +1,20 @@
 ---
-titulo: "SkyCruiser A22"
-image: "/images/a22.png"
-pdf: "/pdf/a22.pdf"
-tag: "Drones"
-desc: "El SkyCruiser A22 es un dron de ala fija de nivel profesional diseñado específicamente para usos topográficos. Fabricado por Surveying South, este dron está especialmente pensado para topógrafos sin experiencia previa en levantamientos aéreos. Su diseño permite un lanzamiento manual, lo que lo hace fácil de operar, estable, confiable y altamente eficiente en comparación con los métodos topográficos tradicionales. Estas características lo convierten en una herramienta ideal para proyectos de mapeo aéreo a escalas de 1:1000 y 1:2000, abarcando áreas de hasta 300 kilómetros cuadrados."
-brand: "Sanding"
+titulo: "Bastón Telescópico de 2,5 mts NLS31V"
+image: "/images/nls31v.png"
+tag: "Bastones"
+price: 125.00
+car: 
+    - "Modelo: NLS 31 V"
+    - "Material: Aluminio"
+    - "Tipo: Telescopio de 1 sección"
+    - "Seguro: Bloqueo por presión"
+    - "Altura Máxima: 2500 mm"
+    - "Altura Mínima: 1500 mm"
+    - "Unidades: Metros y Pies"
+    - "Color: Rojo/Blanco"
+    - "Unión: Rosca de 5/8"
+    - "Punta: Acero inosidable de 10 cm"
+    - "Nivel de Burbuja: Si"
+    - "Incluye: Estuche"
+brand: "Bastón"
 ---

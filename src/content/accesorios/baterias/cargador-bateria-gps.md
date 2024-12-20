@@ -1,8 +1,13 @@
 ---
-titulo: "SkyCruiser A22"
-image: "/images/a22.png"
-pdf: "/pdf/a22.pdf"
-tag: "Drones"
-desc: "El SkyCruiser A22 es un dron de ala fija de nivel profesional diseñado específicamente para usos topográficos. Fabricado por Surveying South, este dron está especialmente pensado para topógrafos sin experiencia previa en levantamientos aéreos. Su diseño permite un lanzamiento manual, lo que lo hace fácil de operar, estable, confiable y altamente eficiente en comparación con los métodos topográficos tradicionales. Estas características lo convierten en una herramienta ideal para proyectos de mapeo aéreo a escalas de 1:1000 y 1:2000, abarcando áreas de hasta 300 kilómetros cuadrados."
-brand: "Sanding"
+titulo: "Bateria para GPS 3400"
+image: "/images/3400.png"
+tag: "Baterias"
+price: 149.00
+car: 
+    - "Modelo: 3400"
+    - "Bateria: Litio recargable"
+    - "Voltaje: 7.4V 3400mAh(25Wh)"
+    - "Entrada para Cargar: 2 polos"
+    - "Dimensiones: 45x24x75 mm"
+brand: "Samsung"
 ---
