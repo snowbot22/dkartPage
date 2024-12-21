@@ -1,8 +1,13 @@
 ---
-titulo: "SkyCruiser A22"
-image: "/images/a22.png"
-pdf: "/pdf/a22.pdf"
-tag: "Drones"
-desc: "El SkyCruiser A22 es un dron de ala fija de nivel profesional diseñado específicamente para usos topográficos. Fabricado por Surveying South, este dron está especialmente pensado para topógrafos sin experiencia previa en levantamientos aéreos. Su diseño permite un lanzamiento manual, lo que lo hace fácil de operar, estable, confiable y altamente eficiente en comparación con los métodos topográficos tradicionales. Estas características lo convierten en una herramienta ideal para proyectos de mapeo aéreo a escalas de 1:1000 y 1:2000, abarcando áreas de hasta 300 kilómetros cuadrados."
+titulo: "Burbujas/Ojo de Pollo"
+image: "/images/burbujas.png"
+tag: "Otros"
+price: 14.99
+car: 
+    - "Modelo: PFPE 01"
+    - "Material: Aluminio"
+    - "Diámetro: 19 mm"
+    - "Alto: 12 mm"
+    - "Uso: Bastones telescópicos/Bases nivelantes"
 brand: "Sanding"
 ---

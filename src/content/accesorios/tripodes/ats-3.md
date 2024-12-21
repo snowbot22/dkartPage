@@ -1,8 +1,19 @@
 ---
-titulo: "SkyCruiser A22"
-image: "/images/a22.png"
-pdf: "/pdf/a22.pdf"
-tag: "Drones"
-desc: "El SkyCruiser A22 es un dron de ala fija de nivel profesional diseñado específicamente para usos topográficos. Fabricado por Surveying South, este dron está especialmente pensado para topógrafos sin experiencia previa en levantamientos aéreos. Su diseño permite un lanzamiento manual, lo que lo hace fácil de operar, estable, confiable y altamente eficiente en comparación con los métodos topográficos tradicionales. Estas características lo convierten en una herramienta ideal para proyectos de mapeo aéreo a escalas de 1:1000 y 1:2000, abarcando áreas de hasta 300 kilómetros cuadrados."
-brand: "Sanding"
+titulo: "Trípode de Aluminio"
+image: "/images/ats3.png"
+tag: "Trípodes"
+price: 125.00
+car: 
+    - "Modelo: ATS-3"
+    - "Material: Aluminio"
+    - "Altura Máxima: 1700 mm"
+    - "Altura Mínima: 1000 mm"
+    - "Seguro: Tipo mariposa"
+    - "Tipo de Cabeza: Plana"
+    - "Cabeza Interior: 66 mm"
+    - "Cabeza Exterior: 158 mm"
+    - "Color: Aluminio"
+    - "Peso: 3.5 Kg"
+    - "Incluye: Correa"
+brand: "Trípode"
 ---

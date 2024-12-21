@@ -7,12 +7,16 @@ import React from "react";
 
 
 const items = await getCollection("equipos");
+const accs= await getCollection("accesorios");
+const subcarpetas = Array.from(
+    new Set(accs.map((entry) => entry.slug.split('/')[0]))
+  );
+
+  console.log(subcarpetas);
 ---
 
 <Layout title="teSTPage" theme="white">
-    
-    <PaginationSlider items={items} client:idle sect="/equipos/"/>
-   
+  {accs}
 
 </Layout>
 

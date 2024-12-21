@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import PaginationSlider from "../../components/PaginationSlider";
+import Band from '../../components/Band.astro';
+
+const page="Distanciometros"
+const slug= "distanciometros"
+const allEntries = await getCollection('accesorios');
+const entries = allEntries.filter((entry) =>
+  entry.slug.startsWith(`${slug}/`)
+);
+
+
+
+// Filtra las entradas pertenecientes a la subcarpeta actual
+
+
+function capitalizeFirstLetter(string) {
+  if (!string) return ''; // Maneja cadenas vacías o nulas
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+---
+<Layout title={"Dkart | " + page} theme='white'>
+  <Band title={page}/>
+  <PaginationSlider items={entries} sect={"/accesorios/"} client:idle/>
+</Layout>
+
+<style>
+  
+</style>

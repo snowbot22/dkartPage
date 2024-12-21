@@ -22,5 +22,4 @@ const pageCollection = defineCollection({
 export const collections = {
   products: pageCollection,
   accesorios: pageCollection,
-  equipos: pageCollection,
 };
