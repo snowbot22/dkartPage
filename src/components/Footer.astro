@@ -1,0 +1,237 @@
+---
+import { getCollection } from "astro:content";
+
+const equipos = await getCollection("equipos");
+const equiposFiltro = [
+  ...new Set(
+    equipos.map((e, i) => {
+      return e.data.tag;
+    })
+  ),
+];
+const subcarpetas = Array.from(
+  new Set(equipos.map((entry) => entry.slug.split("/")[0]))
+);
+
+const menu = [
+  {
+    name: "Venta de Accesorios",
+    link: "/accesorios/",
+  },
+  {
+    name: "Consultorias",
+    link: "/consultorias/",
+  },
+  {
+    name: "Servicio Técnico",
+    link: "/servicio/",
+  },
+  {
+    name: "Holding de Empresas",
+    link: "/holding/",
+  },
+  {
+    name: "Contacto",
+    link: "/contacto/",
+  },
+  {
+    name: "Videoteca",
+    link: "/videoteca/",
+  },
+];
+---
+
+<footer>
+  <section class="contact">
+    <img
+      src="/images/logo-2.png"
+      alt="logo Dkart blanco"
+      class="contact__image"
+    />
+    <section class="contact__container">
+      <div class="contact__link">
+        <img
+          src="/icons/map-w.png"
+          alt="logo direccion"
+          class="contact__icon"
+        />
+        <p>
+          Gonzalo Zaldumbide N48-32 y Capitán Rafael Ramos, Quito, Ecuador
+          170503
+        </p>
+      </div>
+      <div class="contact__link">
+        <img
+          src="/icons/email-w.png"
+          alt="logo direccion correo electronico"
+          class="contact__icon"
+        />
+        <p>pablo.dkart@gmail.com</p>
+      </div>
+      <a
+        href="https://api.whatsapp.com/send/?phone=593994954690&text&type=phone_number&app_absent=0"
+        class="contact__link"
+      >
+        <img
+          src="/icons/tel-w.png"
+          alt="logo numero de telefono"
+          class="contact__icon"
+        />
+        <p>+593 99 495 4690</p>
+      </a>
+      <a href="https://www.facebook.com/DKART.EC" class="contact__link">
+        <img
+          src="/icons/fb-w.png"
+          alt="logo pagina de facebook"
+          class="contact__icon"
+        />
+        <p>Descartes Engineering DKART</p>
+      </a>
+    </section>
+  </section>
+  <section class="sell border--bottom">
+    <h2 class="sell__title">Venta de Equipos</h2>
+    <section class="sell__container">
+      {
+        equiposFiltro.map((f, i) => {
+          return (
+            <a href={"/equipos/" + subcarpetas[i]} class="sell__link">
+              {f}
+            </a>
+          );
+        })
+      }
+    </section>
+  </section>
+  <section class="sell">
+    <h2 class="sell__title">Menú</h2>
+    <section class="sell__container">
+      {
+        menu.map((m, i) => {
+          return (
+            <a href={m.link} class="sell__link">
+              {m.name}
+            </a>
+          );
+        })
+      }
+    </section>
+  </section>
+</footer>
+
+<style>
+  footer {
+    background-color: var(--black);
+    height: max-content;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    border-top: 30px;
+    border-top: 2px solid var(--white);
+    padding: 40px;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .contact {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+  }
+  .contact__image {
+    width: 400px;
+  }
+  .contact__container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 14px;
+  }
+  .contact__link {
+    color: var(--white);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 7px;
+    max-width: 450px;
+  }
+  .contact__icon {
+    width: 22px;
+    object-fit: contain;
+  }
+  .sell {
+    display: flex;
+    flex-flow: column nowrap;
+    color: var(--white);
+    gap: 20px;
+  }
+  .sell__container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+  }
+  .sell__title {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .sell__link {
+    color: #cccccc;
+  }
+  .sell__link:hover {
+    color: #fff;
+    transition: all ease 0.3s;
+  }
+
+  @media (max-width: 1200px) and (min-width: 800px) {
+    footer {
+      border-top: 2px solid var(--white);
+      padding: 30px;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 45px;
+    }
+    .contact__image {
+    width: 300px;
+  }
+  .contact__link {
+    max-width: 400px;
+  }
+  }
+  @media (max-width: 800px){
+    footer {
+    flex-flow: column nowrap;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  .contact__image{
+    width: 100%;
+    max-width: 350px;
+  }
+  .contact {
+    width: 100%;
+    padding: 20px 10px 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--white);
+  }
+  .contact__container {
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+  .sell{
+    width: 100%;
+    padding: 0 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .border--bottom{
+    border-bottom: 1px solid var(--white);
+    padding-bottom: 20px;
+  }
+  }
+</style>

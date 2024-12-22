@@ -7,6 +7,7 @@ interface Props {
 const { title, theme } = Astro.props;
 import Header from '../components/Header.astro';
 import '@fontsource-variable/nunito-sans';
+import Footer from '../components/Footer.astro';
 
 
 ---
@@ -26,6 +27,7 @@ import '@fontsource-variable/nunito-sans';
 		<main class={theme == "black" ? `flex--col--nowrap bg--black` : "flex--col--nowrap bg--white"}>
 			<slot ></slot>
 		</main>
+		<Footer />
 		<a href="" class="wsp__link">
 			<img class="wsp__icon" src="/icons/wsp-icon.png" alt="Esrcibir a Whatsapp">
 		</a>

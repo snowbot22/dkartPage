@@ -101,7 +101,6 @@ const content = [
 ---
 
 <Layout title="Dkart | Consultorias" theme="white">
-  <article></article>
   {
     content.map((c, i) => {
       const nextSection = content[i + 1] ? content[i + 1].id : content[0].id;
@@ -138,6 +137,13 @@ const content = [
 </Layout>
 
 <style>
+  .consult__intro{
+    width: 100%;
+    height: 90vh;
+    background-color: var(--red);
+    display: grid;
+    place-items: center;
+  }
   .consult {
     width: 100%;
     height: 100vh;
@@ -247,6 +253,17 @@ const content = [
     width: 140px;
     height: 140px;
     object-fit: cover;
+  }
+  .consult__intro__container{
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+background: rgba(245, 245, 247, 0.97);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.8px);
+-webkit-backdrop-filter: blur(10.8px);
+border: 1px solid rgba(245, 245, 247, 0.3);
+
   }
 
   @media (max-width: 1200px) and (min-width: 800px){
