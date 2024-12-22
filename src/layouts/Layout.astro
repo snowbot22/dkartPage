@@ -28,7 +28,7 @@ import Footer from '../components/Footer.astro';
 			<slot ></slot>
 		</main>
 		<Footer />
-		<a href="" class="wsp__link">
+		<a href="https://api.whatsapp.com/send/?phone=593994954690&text&type=phone_number&app_absent=0" class="wsp__link">
 			<img class="wsp__icon" src="/icons/wsp-icon.png" alt="Esrcibir a Whatsapp">
 		</a>
 	</body>
@@ -106,5 +106,10 @@ import Footer from '../components/Footer.astro';
 	}
 	.color--red{
 		color: var(--red);
+	}
+	@media (max-width: 800px){
+		.wsp__icon{
+			width: 60px;
+		}
 	}
 </style>

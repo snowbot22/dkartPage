@@ -5,6 +5,7 @@ const content = [
   {
     title: "GEODÉSIA",
     id: "geodesia",
+    img: "/images/s1.jpg",
     list: [
       "Posicionamientos GNSS",
       "Planimetría y altimetría",
@@ -18,6 +19,7 @@ const content = [
   {
     title: "TOPOGRAFÍA",
     id: "topografia",
+    img: "/images/s2.jpg",
     list: [
       "Levantamientos topográficos y planimétricos",
       "Perfiles topográficos",
@@ -32,6 +34,7 @@ const content = [
   {
     title: "BATIMETRÍA",
     id: "batimetria",
+    img: "/images/s5.webp",
     list: [
       "Levantamientos Batimétricos",
       "Perfiles Batimétricos",
@@ -41,6 +44,7 @@ const content = [
   {
     title: "FOTOGRAMETRÍA",
     id: "fotogrametria",
+    img: "/images/s3.jpg",
     list: [
       "Toma de fotografía aérea con dron (ala fija / ala móvil)",
       "Puntos de control o apoyo fotogramétrico",
@@ -52,11 +56,13 @@ const content = [
   {
     title: "DISEÑOS DE VÍAS",
     id: "diseño",
+    img: "/images/s6.jpg",
     list: ["Replanteos", "Cálculo de Movimiento de Tierras"],
   },
   {
     title: "CARTOGRAFÍA",
     id: "cartografia",
+    img: "/images/s4.jpeg",
     list: [
       "Elaboración, Generación y Edición de Cartografía Básica y Temática",
       "Digitalización de Mapas",
@@ -65,6 +71,7 @@ const content = [
   {
     title: "CATASTRO",
     id: "catastro",
+    img: "/images/s7.jpeg",
     list: [
       "Urbano y Rural",
       "Relevamiento Predial",
@@ -75,6 +82,7 @@ const content = [
   {
     title: "TRANSPORTE",
     id: "transporte",
+    img: "/images/s8.jpg",
     list: [
       "Planes de movilidad",
       "Estudios de necesidad",
@@ -87,6 +95,7 @@ const content = [
   {
     title: "TRANSFERENCIA DE CONOCIMIENTOS",
     id: "conocimientos",
+    img: "/images/s9.jpg",
     list: [
       "Uso y manejo de equipos topográficos y geodésicos",
       "Fotogrametría y mapeo con drones",
@@ -106,9 +115,9 @@ const content = [
       const nextSection = content[i + 1] ? content[i + 1].id : content[0].id;
       return (
         <article class="consult glass--black" id={c.id}>
-          <section class="consult__container glass--black">
-            <img src="" alt={"imagen " + c.title} class="consult__img"/>
-            <section class="consult__text text--white">
+          <section class={i % 2 == 0 ? "consult__container glass--black" :"consult__container glass--white" }>
+            <img src={c.img} alt={"imagen " + c.title} class="consult__img"/>
+            <section class={i % 2 == 0 ? "consult__text text--white" : "consult__text text--black"}>
               <h2 class="consult__title">{c.title}</h2>
               <ul class="consult__list">
                 {c.list.map((l, i) => {
@@ -137,17 +146,11 @@ const content = [
 </Layout>
 
 <style>
-  .consult__intro{
-    width: 100%;
-    height: 90vh;
-    background-color: var(--red);
-    display: grid;
-    place-items: center;
-  }
   .consult {
     width: 100%;
     height: 100vh;
     min-height: 680px;
+    max-height: 700px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -160,6 +163,7 @@ const content = [
     display: grid;
     grid-template-columns: 45% 55%;
     position: relative;
+    place-items: center;
   }
   .consult__text {
     grid-row: 1;
@@ -215,8 +219,10 @@ const content = [
     grid-row: 1;
     grid-column: 2;
     width: 100%;
-    height: 100%;
-    background-color: gold;
+    height: 500px;
+    object-fit: cover;
+    mask-image: linear-gradient(to left, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);
   }
   .glass--black{
     background: rgba(34, 34, 34, 0.94);
