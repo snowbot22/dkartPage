@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import PaginationSlider from "../components/PaginationSlider";
 import CardProd from "../components/CardProd.astro";
 import React from "react";
+import ProductSlider from "../components/ProductSlider";
 
 
 const items = await getCollection("equipos");
@@ -12,12 +13,11 @@ const subcarpetas = Array.from(
     new Set(accs.map((entry) => entry.slug.split('/')[0]))
   );
 
-  console.log(subcarpetas);
+  console.log(items);
 ---
 
 <Layout title="teSTPage" theme="white">
-  {accs}
-
+  <ProductSlider products={accs} cat="/accesorios/" client:idle/>
 </Layout>
 
 <script>

@@ -1,22 +1,30 @@
 ---
-import { getEntries } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
 import RelatedProducts from '../../components/RelatedProducts.astro';
+import ProductSlider from "../../components/ProductSlider.jsx";
 
 // 1. Genera una nueva ruta para cada entrada de colección
 export async function getStaticPaths() {
-    const entries = await getCollection('accesorios');
-  return entries.map((entry) => ({
-    params: { slug: entry.slug}, // El slug incluye las subcarpetas automáticamente
-    props: { entry },
-  }));
+  const entries = await getCollection('accesorios');
 
+  return entries.map((entry) => ({
+    params: { slug: entry.slug }, // El slug incluye las subcarpetas automáticamente
+    props: { entry }, // Pasa la entrada completa como props
+  }));
 }
 
-// 2. Para tu plantilla, puedes obtener la entrada directamente de la prop
-const { entry } = Astro.props;
+// 2. Filtrar productos relacionados
+const { entry } = Astro.props; // Obtén el producto actual de la colección
 const { Content } = await entry.render();
+
+// Obtener productos relacionados
+const allProducts = await getCollection('accesorios'); // Obtén toda la colección
+const relatedProducts = allProducts.filter(
+  (item) => item.data.tag === entry.data.tag && item.slug !== entry.slug // Coincidencia por tag y excluye el producto actual
+);
+console.log(relatedProducts);
+
 ---
 
 <Layout title={`Dkart | ${entry.data.titulo}`} theme='white'>
@@ -62,7 +70,7 @@ const { Content } = await entry.render();
       {entry.data.car && <p> {entry.data.car} </p>}
     </section>
   </article>
-  <RelatedProducts cat={entry.data.tag}/>
+  <ProductSlider products={relatedProducts} cat="/accesorios/" client:idle/>
   
 </Layout>
 
