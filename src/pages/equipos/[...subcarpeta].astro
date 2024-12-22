@@ -36,9 +36,15 @@ let capitalizeTitle= capitalizeFirstLetter(subcarpeta.replace('-', ' '))
 ---
 <Layout title={"Dkart | " + capitalizeTitle} theme='white'>
   <Band title={capitalizeTitle}/>
+  <div class="separador">
+
+  </div>
   <PaginationSlider items={entries} sect={"/equipos/"} client:idle/>
 </Layout>
 
 <style>
-  
+  .separador{
+    width: 100%;
+    height: 30px;
+  }
 </style>
