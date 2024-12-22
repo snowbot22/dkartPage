@@ -1,0 +1,349 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const content = [
+  {
+    title: "GEODÉSIA",
+    id: "geodesia",
+    list: [
+      "Posicionamientos GNSS",
+      "Planimetría y altimetría",
+      "Levantamientos GPRS, RTK y NTRIP",
+      "Control y redes de control geodésicas",
+      "Puntos de control de primer orden",
+      "Delimitación de concesiones mineras y petroleras",
+      "Determinación de modelos de ondulación geoidal",
+    ],
+  },
+  {
+    title: "TOPOGRAFÍA",
+    id: "topografia",
+    list: [
+      "Levantamientos topográficos y planimétricos",
+      "Perfiles topográficos",
+      "Replanteos",
+      "Diseños viales",
+      "Diseños de plataformas de perforación",
+      "Ubicación de pozos de perforación",
+      "Nivelaciones geométricas y trigonométricas",
+      "Inventarios georreferenciados",
+    ],
+  },
+  {
+    title: "BATIMETRÍA",
+    id: "batimetria",
+    list: [
+      "Levantamientos Batimétricos",
+      "Perfiles Batimétricos",
+      "Cálculo de Caudales",
+    ],
+  },
+  {
+    title: "FOTOGRAMETRÍA",
+    id: "fotogrametria",
+    list: [
+      "Toma de fotografía aérea con dron (ala fija / ala móvil)",
+      "Puntos de control o apoyo fotogramétrico",
+      "Generación de Modelos Digitales de Elevación (Superficie - MDS y Terreno - MDT)",
+      "Generación de ortofotos",
+      "Balance Radiométrico",
+    ],
+  },
+  {
+    title: "DISEÑOS DE VÍAS",
+    id: "diseño",
+    list: ["Replanteos", "Cálculo de Movimiento de Tierras"],
+  },
+  {
+    title: "CARTOGRAFÍA",
+    id: "cartografia",
+    list: [
+      "Elaboración, Generación y Edición de Cartografía Básica y Temática",
+      "Digitalización de Mapas",
+    ],
+  },
+  {
+    title: "CATASTRO",
+    id: "catastro",
+    list: [
+      "Urbano y Rural",
+      "Relevamiento Predial",
+      "Levantamiento de Fichas Catastrales",
+      "Desarrollo de Sistemas de Información Catastral (SIC)",
+    ],
+  },
+  {
+    title: "TRANSPORTE",
+    id: "transporte",
+    list: [
+      "Planes de movilidad",
+      "Estudios de necesidad",
+      "Informes técnicos de factibilidad",
+      "Análisis de oferta y demanda",
+      "Análisis de interferencias",
+      "Dimensionamiento de flota",
+    ],
+  },
+  {
+    title: "TRANSFERENCIA DE CONOCIMIENTOS",
+    id: "conocimientos",
+    list: [
+      "Uso y manejo de equipos topográficos y geodésicos",
+      "Fotogrametría y mapeo con drones",
+      "Toma de fotografía y generación de ortofotos",
+      "Procesamiento digital de imágenes",
+      "Elaboración de planes de movilidad y estudios de necesidad",
+    ],
+  },
+];
+
+
+---
+
+<Layout title="Dkart | Consultorias" theme="white">
+  <article></article>
+  {
+    content.map((c, i) => {
+      const nextSection = content[i + 1] ? content[i + 1].id : content[0].id;
+      return (
+        <article class="consult glass--black" id={c.id}>
+          <section class="consult__container glass--black">
+            <img src="" alt={"imagen " + c.title} class="consult__img"/>
+            <section class="consult__text text--white">
+              <h2 class="consult__title">{c.title}</h2>
+              <ul class="consult__list">
+                {c.list.map((l, i) => {
+                  return (
+                    <li class="consult__li">
+                      <p>{l}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+              <a href=`https://wa.me/593994954690?text=Hola!%20estoy%20interesado%20en%20la%20Consultoria:%20${c.title}` class="consult__button">
+                <img src="/icons/wpp-w.png" alt="whatsapp logo" class="button__logo">
+                <p>
+                  Contáctanos
+                </p>
+              </a>
+              <button class="consult__onclick" data-target={nextSection}>
+                <img src="/icons/doble-a-w.png" alt="go to next section" class="consult__next">
+              </button>
+            </section>
+          </section>
+        </article>
+      );
+    })
+  }
+</Layout>
+
+<style>
+  .consult {
+    width: 100%;
+    height: 100vh;
+    min-height: 680px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .consult__container {
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 45% 55%;
+    position: relative;
+  }
+  .consult__text {
+    grid-row: 1;
+    grid-column: 1;
+    width: 100%;
+    height: 100%;
+    padding: 30px 80px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .consult__title {
+    font-size: 45px;
+  }
+  .consult__list {
+    list-style: disc;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    margin-left: 30px;
+  }
+  .consult__li {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+  .consult__li:hover {
+    opacity: 1;
+    transition: all ease 0.3s;
+  }
+  .consult__button{
+    background-color: rgb(27, 122, 27);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    color: white;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 20px;
+    gap: 10px;
+  }
+  .button__logo{
+    width: 30px;
+  }
+  .consult__button:hover{
+    transform: scale(1.01);
+    transition: all ease 0.3s;
+  }
+  .consult__img{
+    grid-row: 1;
+    grid-column: 2;
+    width: 100%;
+    height: 100%;
+    background-color: gold;
+  }
+  .glass--black{
+    background: rgba(34, 34, 34, 0.94);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.3px);
+  -webkit-backdrop-filter: blur(7.3px);
+  border: 1px solid rgba(34, 34, 34, 0.3);
+  }
+  .glass--white{
+    background: rgba(251, 251, 251, 0.71);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.3px);
+  -webkit-backdrop-filter: blur(7.3px);
+  border: 1px solid  1px solid rgba(251, 251, 251, 0.3);
+  }
+  .text--black{
+    color: var(--black);
+  }
+  .text--white{
+    color: var(--white)
+  }
+  .consult__onclick{
+    background-color: transparent;
+    border: unset;
+    position: absolute;
+    cursor: pointer;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-100%);
+    width: 140px;
+    height: 140px;
+  }
+  .consult__next{
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1200px) and (min-width: 800px){
+     .consult__text {
+    padding: 20px;
+  }
+  .consult__title{
+    font-size: 35px;
+  }
+  .consult__next{
+    width: 100px;
+    height: 100px;
+  }
+  .consult__onclick{
+    width: 100px;
+    height: 100px;
+    transform: translateX(-100%);
+  }
+  }
+  @media (max-width: 800px){
+    .consult {
+    height: max-content;
+    min-height: 600px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+     .consult__container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 45% 55%;
+    position: relative;
+    height: max-content;
+    min-height: 600px;
+    padding: 0 0 00px 0;
+  }
+  .consult__title{
+    font-size: 28px;
+  }
+  .consult__text{
+    grid-row: 2;
+    grid-column: 1;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 100px 10px;
+  }
+  .consult__img{
+    grid-row: 1;
+    grid-column: 1;
+    height: 100%;
+    min-height: 250px;
+  }
+  .consult__list{
+    width: 100%;
+    list-style: none;
+    gap: 10px;
+    text-align: start;
+    margin-left: unset;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .consult__next{
+    width: 50px;
+    height: 50px;
+  }
+  .consult__onclick{
+    width: 50px;
+    height: 50px;
+    transform: translateX(-60%);
+    bottom: unset;
+    display: none;
+  }
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll('.consult__onclick');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Obtén el ID de la sección destino del data-target
+    const targetId = button.getAttribute('data-target');
+
+    // Encuentra la sección por su ID
+    const targetSection = document.getElementById(targetId);
+
+    // Desplázate suavemente a esa sección
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+
+</script>
