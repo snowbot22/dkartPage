@@ -3,8 +3,7 @@ import Carrusel from "../components/Slider-Index";
 import Layout from "../layouts/Layout.astro";
 import CarruselGeneral from "../components/Slider";
 import CardSer from "../components/CardSer.astro";
-import CardProd from "../components/CardProd.astro";
-import CardAcc from "../components/CardAcc.astro";
+import IndexCards from "../components/IndexCards.astro";
 
 const imgs = ["/images/index1.jpg", "/images/index2.jpg", "/images/index3.jpg"];
 
@@ -105,24 +104,18 @@ const imgs5 = [
       }
     </section>
   </article>
-  <!-- 
   <article class="products flex--col--nowrap">
     <h2 class="products__title">VENTA DE EQUIPOS</h2>
-    <CardProd />
-  </article>
-  -->
-  <!-- 
-  <article class="accs flex--col--nowrap">
-    <h2 class="accs__title">ACCESORIOS</h2>
-    <section class="acc__container">
-      {
-        tAccs.map((t, index) => {
-          return <CardAcc titles={t} imgs={imgs4[index]} />;
-        })
-      }
+    <IndexCards />
+    <section class="products__container">
+      <a href="/equipos/" class="products__button">
+        Ver Equipos
+      </a>
+      <a href="/accesorios/" class="products__button">
+        Ver Accesorios
+      </a>
     </section>
   </article>
-  -->
   <article class="repr flex--col--nowrap">
     <h2 class="rep__title">REPRESENTACIONES INTERNACIONALES</h2>
     <section class="rep__container">
@@ -203,12 +196,28 @@ const imgs5 = [
     align-items: center;
     margin-bottom: 20px;
     margin-top: 60px;
+    gap: 30px;
   }
   .products__title {
     font-size: 30px;
     border-bottom: 2px solid #672434;
     padding-bottom: 5px;
     z-index: 2;
+  }
+  .products__container{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
+  .products__button{
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 15px;
   }
 
   /* ACCCESORIES */

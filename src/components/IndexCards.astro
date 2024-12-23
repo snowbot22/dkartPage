@@ -1,0 +1,186 @@
+---
+const prods =[
+    {   
+        name: "Gnss y Gps",
+        link: "/equipos/gnss-gps",
+        img: "/images/slider1.jpg"
+    },
+    {
+        name: "Gnss y Gps",
+        link: "/equipos/drones",
+        img: "/images/slider2.jpg"
+    },
+    {
+        name: "Drones",
+        link: "/equipos/drones",
+        img: "/images/slider3.jpg"
+    },
+    {
+        name: "Estaciones Totales",
+        link: "/equipos/estaciones-totales",
+        img: "/images/slider4.jpg"
+    },
+    {
+        name: "Camaras Multiespectrales",
+        link: "/equipos/camaras-multiespectrales",
+        img: "/images/slider5.jpg"
+    }
+]
+---
+<article class="products">
+    {
+        prods.map((p,i)=>{
+            return <a href={p.link} class=`products__link item-${i}`>
+                <img src={p.img} alt="imagen" class="products__img">
+                <section class="products__text">
+                    <h2 class="products__title">
+                        {p.name}
+                    </h2>
+                    <p class="products__p">
+                        Ver más
+                    </p>
+                </section>
+            </a>
+        })
+    }
+</article>
+
+<style>
+    .products{
+        width: 90%;
+        max-width: 1400px;
+        height: max-content;
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        grid-template-rows: 33.3% 33.3% 33.3%;
+        gap: 10px;
+    }
+    .item-0{
+        grid-row: 1/3;
+        grid-column: 1;
+    }
+    .item-1{
+        grid-row: 1;
+        grid-column: 2/4;
+    }
+    .item-2{
+        grid-row: 3;
+        grid-column: 1/3;
+    }
+    .item-3{
+        grid-row: 2/4;
+        grid-column: 3;
+    }
+    .item-4{
+        grid-row: 2;
+        grid-column: 2;
+    }
+    .products__link{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 100%;
+    }
+    .products__img{
+        width: 100%;
+        height: 100%;
+        object-fit:cover;
+        grid-row: 1;
+        grid-column: 1;
+    }
+    .products__text {
+    grid-row: 1;
+    grid-column: 1;
+    background: rgba(34, 34, 34, 0.61);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(34, 34, 34, 0.3);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0; /* Ocultar inicialmente */
+    visibility: hidden; /* Para asegurarnos de que no sea clickeable */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.products__link:hover .products__text {
+    opacity: 1; /* Hacer visible */
+    visibility: visible; /* Mostrarlo */
+}
+
+@media (max-width:800px){
+    .products{
+        width:90%;
+        height: max-content;
+        min-height: 400px;
+        gap: 00px;
+        place-items: center;
+    }
+     .item-0{
+        grid-row: 1/3;
+        grid-column: 1;
+    }
+    .item-1{
+        grid-row: 1/;
+        grid-column: 2/4;
+    }
+    .item-2{
+        grid-row: 3;
+        grid-column: 1/3;
+    }
+    .item-3{
+        grid-row: 2/4;
+        grid-column: 3;
+    }
+    .item-4{
+        grid-row: 2;
+        grid-column: 2;
+    }
+    .products__link{
+        width: 98%;
+        height: 98%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 100%;
+    }
+    .products__img{
+        object-fit: fill;
+    }
+    .products__text {
+    grid-row: 1;
+    grid-column: 1;
+    background: rgba(34, 34, 34, 0.67);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(0.6px);
+-webkit-backdrop-filter: blur(0.6px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 1; /* Ocultar inicialmente */
+    visibility: visible; /* Para asegurarnos de que no sea clickeable */
+    transition: unset;
+}
+
+.products__link:hover .products__text {
+    opacity:1; /* Hacer visible */
+    visibility: visible; /* Mostrarlo */
+}
+.products__title{
+    font-size: 12px;
+    text-align: center;
+}
+.products__p{
+    font-size: 10px;
+}
+}
+</style>
