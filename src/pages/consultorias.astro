@@ -292,7 +292,7 @@ border: 1px solid rgba(245, 245, 247, 0.3);
   @media (max-width: 800px){
     .consult {
     height: max-content;
-    min-height: 600px;
+    min-height: unset;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -302,11 +302,11 @@ border: 1px solid rgba(245, 245, 247, 0.3);
      .consult__container {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 45% 55%;
+    grid-template-rows: 300px max-content;
     position: relative;
     height: max-content;
-    min-height: 600px;
-    padding: 0 0 00px 0;
+    min-height: unset;
+    padding: 0 0 20px 0;
   }
   .consult__title{
     font-size: 28px;
@@ -318,14 +318,13 @@ border: 1px solid rgba(245, 245, 247, 0.3);
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 100%;
-    padding: 100px 10px;
+    height: max-content;
+    padding: 10px;
   }
   .consult__img{
     grid-row: 1;
     grid-column: 1;
     height: 100%;
-    min-height: 250px;
   }
   .consult__list{
     width: 100%;

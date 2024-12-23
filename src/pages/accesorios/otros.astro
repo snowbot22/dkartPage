@@ -24,9 +24,13 @@ function capitalizeFirstLetter(string) {
 ---
 <Layout title={"Dkart | " + page} theme='white'>
   <Band title={page}/>
+  <div class="separador"></div>
   <PaginationSlider items={entries} sect={"/accesorios/"} client:idle/ >
 </Layout>
 
 <style>
-  
+    .separador{
+    width: 100%;
+    height: 30px;
+  }
 </style>

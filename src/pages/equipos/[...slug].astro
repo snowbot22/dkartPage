@@ -66,11 +66,19 @@ console.log(relatedProducts.length);
         }
       </p>
       {entry.data.includes && <p> {entry.data.includes} </p>}
-      {entry.data.car && <p> {entry.data.car} </p>}
+      {entry.data.car && <ul> {entry.data.car.map((c,i)=>{
+        return <li>
+          {c}
+        </li>
+      })} </ul>}
     </section>
   </article>
-  <ProductSlider products={relatedProducts} cat="/equipos/"client:idle/>
-  
+  <article class="related">
+    <h2 class="related__title">
+      Productos Relacionados
+    </h2>
+    <ProductSlider products={relatedProducts} cat="/equipos/"client:idle/>
+  </article>  
 </Layout>
 
 <style>
@@ -164,6 +172,22 @@ console.log(relatedProducts.length);
     max-width: 1350px;
     padding: 25px 0;
   }
+  .related {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .related__title {
+    font-size: 30px;
+    width: 90%;
+    max-width: 1400px;
+    border-top: 2px solid var(--black);
+    text-align: center;
+    padding-top: 20px;
+  }
   @media  (min-width:800px) and (max-width: 1200px){
     .product{
     flex-flow: row wrap;
@@ -214,6 +238,12 @@ console.log(relatedProducts.length);
   .product__title{
     font-size: 30px;
   }
+  .related__title {
+      font-size: 25px;
+    }
+    .product__desc__title {
+      font-size: 25px;
+    }
   }
 </style>
 

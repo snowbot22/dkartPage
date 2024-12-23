@@ -113,7 +113,32 @@ const links2 = [
   },
 ];
 
-const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
+const icons = [
+  {
+    icon:"/icons/fb-w.png",
+    link: "https://www.facebook.com/DKART.EC"
+  }, 
+  {
+    icon:"/icons/ig-w.png",
+    link: "https://www.instagram.com/dkart_ec/"
+  }, 
+  {
+    icon:"/icons/wpp-w.png",
+    link: "https://wa.me/5930994954690"
+  },
+  {
+    icon: "/icons/tiktok-w.png",
+    link: "https://www.tiktok.com/@dkart_ec"
+  },
+  {
+    icon: "/icons/yt-w.png",
+    link: "https://www.youtube.com/@descartesengineering4341"
+  },
+  {
+    icon: "/icons/l-w.png",
+    link: "https://www.linkedin.com/in/descartes-engineering-dkart-9602571a5/"
+  }
+  ];
 ---
 
 <header>
@@ -122,10 +147,10 @@ const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
       <div class="subnav__links">
         <ul class="subnav__list flex--row--nowrap">
           <li class="subnav__li">
-            <a href="" class="subnav__link"> Servicio Tecnico </a>
+            <a href="/servicio/" class="subnav__link"> Servicio Tecnico </a>
           </li>
           <li class="subnav__li">
-            <a href="" class="subnav__link"> Holding de Empresas </a>
+            <a href="/holding/" class="subnav__link"> Holding de Empresas </a>
           </li>
         </ul>
       </div>
@@ -133,8 +158,8 @@ const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
         {
           icons.map((i, index) => {
             return (
-              <a href="/">
-                <img src={i} alt="" class="subnav__icon" />
+              <a href={i.link}>
+                <img src={i.icon} alt="icono rede social" class="subnav__icon" />
               </a>
             );
           })
@@ -252,6 +277,7 @@ const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
     background-color: #222;
     width: 100%;
     height: 40px;
+    padding: 10px 0;
   }
   .subnav__container {
     background-color:;
@@ -501,6 +527,9 @@ const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
     .mobile__lvl2__a{
       color: var(--white);
     }
+    .subnav__container {
+    justify-content: center;
+  }
     .visible {
       opacity: 1;
       visibility: visible;
@@ -508,6 +537,7 @@ const icons = ["/icons/fb-w.png", "/icons/ig-w.png", "/icons/wpp-w.png"];
     .hidden{
       display: none;
     }
+
   }
 </style>
 
