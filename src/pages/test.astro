@@ -1,32 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getCollection } from "astro:content";
-import PaginationSlider from "../components/PaginationSlider";
-import CardProd from "../components/CardProd.astro";
-import React from "react";
-import ProductSlider from "../components/ProductSlider";
 
+const llamada = async () => {
+  try {
+    const respuesta = await fetch('http://localhost:4000/api/productos/equipos');
 
-const items = await getCollection("equipos");
-const accs= await getCollection("accesorios");
-const subcarpetas = Array.from(
-    new Set(accs.map((entry) => entry.slug.split('/')[0]))
-  );
+    // Asegúrate de usar 'await' aquí
+    const data = await respuesta.json();
+    return data.body;
+  } catch (error) {
+    console.log('Error al obtener los datos:', error);
+  }
+};
 
-  console.log(items);
+// Llama a la función para obtener los datos
+const equipos= await llamada();
+console.log(equipos);
 ---
 
-<Layout title="teSTPage" theme="white">
-  <ProductSlider products={accs} cat="/accesorios/" client:idle/>
+<Layout title="test" theme="white">
+    {equipos.map((equipo)=>(
+        <p>
+            {equipo.prod_nombre}
+        </p>
+    ))}
 </Layout>
-
-<script>
-    const fP= ()=>{
-        if(window.innerWidth < 1200){
-            return 6;
-        }
-        else if(window.innerWidth < 800){
-            return 4;
-        }
-    }
-</script>

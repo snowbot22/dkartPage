@@ -9,46 +9,55 @@ const imgs = ["/images/index1.jpg", "/images/index2.jpg", "/images/index3.jpg"];
 
 const imgs2 = ["/images/somos1.jpg","/images/somos2.jpg","/images/q.jpg"];
 
-const titles = [
-  "Topografía",
-  "Geodésia",
-  "Fotogrametría",
-  "Cartografía",
-  "Batimetría",
-  "Diseño de Vías",
-  "Catastro",
-  "Transporte",
-  "Transferencia de Conocimientos",
-];
-const imgs3 = [
-  "/images/s1.jpg",
-  "/images/s2.jpg",
-  "/images/s3.jpg",
-  "/images/s4.jpeg",
-  "/images/s5.webp",
-  "/images/s6.jpg",
-  "/images/s7.jpeg",
-  "/images/s8.jpg",
-  "/images/s9.jpg",
-];
 
-const tAccs = [
-  "Bases Nivelantes",
-  "Bastones",
-  "Baterias",
-  "Distanciometros",
-  "Prismas y Miniprismas",
-  "Tripodes",
-];
+const infoS=[
+  {
+    name: "Topografía",
+    img: "/images/s2.jpg",
+    link: "#topografia"
+  },
+  {
+    name: "Geodésia",
+    img: "/images/s1.jpg",
+    link: "#geodesia"
+  },
+  {
+    name: "Fotogrametría",
+    img: "/images/s3.jpg",
+    link: "#fotogrametria"
+  },
+  {
+    name: "Cartografía",
+    img: "/images/s4.jpeg",
+    link: "#cartografia"
+  },
+  {
+    name: "Batimetría",
+    img: "/images/s5.webp",
+    link: "#batimetria"
+  },
+  {
+    name: "Diseño de Vías",
+    img: "/images/s6.jpg",
+    link: "#diseño"
+  },
+  {
+    name: "Catastro",
+    img: "/images/s7.jpeg",
+    link: "#catastro"
+  },
+  {
+    name: "Transporte",
+    img: "/images/s8.jpg",
+    link: "#transporte"
+  },
+  {
+    name: "Transferencia de Conocimientos",
+    img: "/images/s9.jpg",
+    link: "#conocimientos"
+  }
+]
 
-const imgs4 = [
-  "/images/a1.webp",
-  "/images/a2.jpg",
-  "/images/a3.webp",
-  "/images/a4.jpg",
-  "/images/a5-1.jpg",
-  "/images/a6.jpg",
-];
 
 const imgs5 = [
   "/images/r1.png",
@@ -98,8 +107,8 @@ const imgs5 = [
     <h2 class="services__title">NUESTROS SERVICIOS</h2>
     <section class="services__container">
       {
-        titles.map((t, index) => {
-          return <CardSer titles={t} imgs={imgs3[index]} />;
+        infoS.map((t, index) => {
+          return <CardSer titles={t.name} imgs={t.img} link={"/consultorias" + t.link}/>;
         })
       }
     </section>

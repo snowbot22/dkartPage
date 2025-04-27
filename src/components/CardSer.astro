@@ -1,5 +1,5 @@
 ---
-const { imgs,titles } = Astro.props;
+const { imgs,titles,link} = Astro.props;
 ---
 
 <section class="cardSer">
@@ -8,7 +8,7 @@ const { imgs,titles } = Astro.props;
         <h3 class="cardSer__title">
             {titles.toUpperCase()}
         </h3>
-        <a class="cardSer__button" href="/">
+        <a class="cardSer__button" href={link}>
             Ver más
         </a>
     </section>

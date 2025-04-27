@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 - Página no encontrada" theme="white">
+    <div class="container">
+        <p class="title">
+            404
+        </p>
+        <p class="subtitle">
+            Página no encontrada
+        </p>
+        <a href="/" class="link">
+            Volver a Inicio
+        </a>
+    </div>
+</Layout>
+
+<style>
+    .container{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        max-height: 700px;
+        min-height: 500px;
+        gap: 12px;
+    }
+    .title{
+        font-size: 150px;
+    }
+    .subtitle{
+        font-size: 40px;
+    }
+    .link{
+        font-size: 40px;
+        border-bottom: 2px solid var(--black);
+    }
+    .link:hover{
+        color: var(--red);
+        border-bottom: 2px solid var(--red);
+    }
+    @media (max-width: 400px) {
+        .title{
+            font-size: 80px;
+        }
+        .subtitle{
+            font-size: 25px;
+        }
+        .link{
+            font-size: 25px;
+        }
+    }
+</style>
